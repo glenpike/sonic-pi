@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem 'activesupport'
-gem 'aubio', git: 'https://github.com/glenpike/ruby-aubio.git', :ref => '5c0a96e'
+gem 'aubio', github: 'glenpike/ruby-aubio'
 gem 'fast_osc'
 gem 'ffi'
 gem 'gettext'
