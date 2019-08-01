@@ -1,0 +1,35 @@
+#!/bin/sh
+
+SP_APP_SRC=`pwd`
+
+echo "This script has been tested on RPi with Raspbian 'Buster'"
+echo "Please direct rage and suggestions to Factoid in (https://gitter.im/samaaron/sonic-pi)"
+
+sudo apt-get install supercollider sc3-plugins
+#Install dependencies for building supercollider, as well as qt5 and supporting libraries for gui
+#sudo apt-get install g++ ruby ruby-dev pkg-config git build-essential libjack-jackd2-dev libsndfile1-dev libasound2-dev libavahi-client-dev libicu-dev libreadline6-dev libfftw3-dev libxt-dev libudev-dev cmake libboost1.58-dev libqwt-qt5-dev libqt5scintilla2-dev libqt5svg5-dev qt5-qmake qt5-default qttools5-dev qttools5-dev-tools qtdeclarative5-dev libqt5webkit5-dev qtpositioning5-dev libqt5sensors5-dev qtmultimedia5-dev libffi-dev
+
+#QT Requirements for qwt and qscintilla
+sudo apt-get install qt5-default libqt5svg5-dev qttools5-dev qt5-qmake qt5-default qttools5-dev qttools5-dev-tools qtdeclarative5-dev libqt5webkit5-dev qtpositioning5-dev libqt5sensors5-dev qtmultimedia5-dev libqscintilla2-qt5-dev
+
+#Additional requirements for plugins
+#sudo apt-get install libfftw3-dev
+
+#Aubio can be installed from a package now
+sudo apt-get install aubio-tools libaubio-dev
+
+#Additional requirements for sonic-pi
+sudo apt-get install libffi-dev ruby-dev bundler libssl-dev libboost-dev cmake
+
+#Build sonic-pi server extensions, documentation, and binary.
+cd $SP_APP_SRC
+cd ../../server/ruby
+bundle install
+cd $SP_APP_SRC
+../../server/ruby/bin/i18n-tool.rb -t
+cp -f ruby_help.tmpl ruby_help.h
+../../server/ruby/bin/qt-doc.rb -o ruby_help.h
+/usr/lib/arm-linux-gnueabihf/qt5/bin/lrelease SonicPi.pro 
+/usr/lib/arm-linux-gnueabihf/qt5/bin/qmake SonicPi.pro 
+#j 3 will run 3 jobs which is okay on multi-core RPi and fast on RPi 4
+make -j3
