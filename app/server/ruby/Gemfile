@@ -15,3 +15,9 @@ gem 'rubame'
 gem 'rugged'
 gem 'sys-proctable'
 gem 'wavefile'
+
+group :development, :test do
+  gem 'mocha'
+  gem 'minitest'
+  gem 'test-unit'
+end
