@@ -101,10 +101,6 @@ module SonicPi
           path = cue_path
         end
 
-        unless __thread_locals.get(:sonic_pi_suppress_cue_logging)
-          __delayed_highlight_message "set #{k.inspect}, #{val.inspect}"
-        end
-
         t = __system_thread_locals.get(:sonic_pi_spider_time)
         b = __system_thread_locals.get(:sonic_pi_spider_beat)
         i = __current_thread_id
@@ -129,7 +125,7 @@ module SonicPi
         @register_cue_event_lambda.call(t, p, i, d, b, m, cue_path, val, __current_sched_ahead_time)
 
         unless __thread_locals.get(:sonic_pi_suppress_cue_logging)
-          unless val
+          if val.nil?
             __delayed_highlight_message "#{prefix} #{k.inspect}"
           else
             if is_list_like?(val)
@@ -147,7 +143,31 @@ module SonicPi
       def set(k, val)
         __cueset(k, val, "set")
       end
+      doc name:           :set,
+          introduced:     Version.new(3,0,0),
+          summary:        "Store information in the Time State",
+          doc:            "Store information in the Time State for the current time for either the current or any other thread. If called multiple times without an intervening call to `sleep`, `sync`, `set` or `cue`, the last value set will prevail. The value will remain in the Time State until overwritten by another call to `set`, or until Sonic Pi quits.
 
+May be used within a `time_warp` to set past/future events. Does not affect time.",
+          args:           [[:time_state_key, :default],
+                           [:value, :anything]],
+          accepts_block:  false,
+          examples:       ["
+  set :foo, 1 #=> Stores the value 1 with key :foo",
+
+        "
+set :foo, 3  # Set :foo to 3
+get[:foo] #=> returns 3",
+
+        "
+in_thread do
+  set :foo, 3  # Set :foo to 3
+end
+
+in_thread do
+  puts get[:foo]  #=> always returns 3 (no race conditions here!)
+end
+"]
       def cue(k, *opts)
         splat_map_or_arr = []
 
@@ -317,7 +337,7 @@ module SonicPi
       doc name:           :get,
           introduced:     Version.new(3,0,0),
           summary:        "Get information from the Time State",
-          doc:            "Retrieve information from Time State set prior to the current time from either the current or any other thread. If called multiple times will always return the same value unless a call to `sleep`, `sync`, `set` or `cue` is interleaved. Also, calls to `get` will always return the same value across Runs for deterministic behaviour - which means you may safely use it in your compositions for repeatable music.
+          doc:            "Retrieve information from Time State set prior to the current time from either the current or any other thread. If called multiple times will always return the same value unless a call to `sleep`, `sync`, `set` or `cue` is interleaved. Also, calls to `get` will always return the same value across Runs for deterministic behaviour - which means you may safely use it in your compositions for repeatable music. If no value is stored with the relevant key, will return `nil`.
 
 May be used within a `time_warp` to retrieve past events. If in a time warp, `get` can not be called from a future position. Does not advance time.",
           args:           [[:time_state_key, :default]],
@@ -356,11 +376,13 @@ end
 
         pulse = params[1] || opts.fetch(:pulse, 4)
         key = (params[2] || opts.fetch(:tick, :swing)).to_sym
+        offset = params[3] || opts.fetch(:offset, 0)
 
         raise ArgumentError, "with_swing shift should be a number. Got: #{shift.inspect}" unless shift.is_a?(Numeric)
         raise ArgumentError, "with_swing pulse should be a positive number. Got: #{pulse.inspect}" unless pulse.is_a?(Numeric) && pulse > 0
-        puts "heeey"
-        use_shift = (tick(key) % pulse) == 0
+        raise ArgumentError, "with_swing offset should be an integer. Got: #{offset.inspect}" unless offset.is_a?(Integer)
+
+        use_shift = ((tick(key) + offset) % pulse) == 0
         if use_shift
           time_warp shift do
             blk.call
@@ -469,6 +491,23 @@ run_code \"sample :ambi_lunar_land\" #=> will play the :ambi_lunar_land sample",
 
         "# Works with any amount of code:
 run_code \"8.times do\nplay 60\nsleep 1\nend # will play 60 8 times"]
+
+
+      def eval_file(path)
+        path = File.expand_path(path.to_s)
+        raise IOError, "Unable to run file - no file found with path: #{path}" unless File.exist?(path)
+        eval(File.read(path))
+      end
+      doc name:           :eval_file,
+          introduced:     Version.new(3,2,0),
+          summary:        "Evaluate the contents of the file inline in the current thread like a function.",
+          args:           [[:filename, :path]],
+          returns:        nil,
+          opts:           nil,
+          accepts_block:  false,
+          doc:            "Reads the full contents of the file with `path` and executes within the current thread like a function call.",
+          examples: ["
+eval_file \"~/path/to/sonic-pi-code.rb\" #=> will run the contents of this file"]
 
 
 
@@ -647,6 +686,14 @@ osc \"/foo/baz\"             # Send an OSC message to port 7000
 
       def __osc_send(host, port, path, *args)
         t = __system_thread_locals.get(:sonic_pi_spider_time) + current_sched_ahead_time
+        args.map! do |arg|
+          case arg
+          when Numeric, String
+            arg
+          else
+            arg.inspect
+          end
+        end
         @osc_server.send_ts(t, "localhost", @osc_router_port, "/send_after", host, port, path, *args)
       end
 
@@ -931,8 +978,6 @@ end"
           sleep_time = delta * orig_sleep_mul_w_density
           new_time = vt_orig + sleep_time
 
-          raise TimeTravelError, "Time travel error - a jump back of #{delta} is too far.\nSorry, although it would be amazing, you can't go back in time beyond the sched_ahead time of #{sat}" if (Time.now - sat) > new_time
-
           __change_time!(new_time)
           __system_thread_locals.set :sonic_pi_spider_beat, orig_beat + delta
           __system_thread_locals.set_local :sonic_pi_local_control_deltas, {}
@@ -991,13 +1036,14 @@ time_warp 0.1 do
   play 80          #=> plays at 1.1
   sleep 0.5
   play 80          #=> plays at 1.6
-                   # time shifts back by 0.1 beats
-                   # however, the sleep 0.5 is still accounted for
-end
+
+end                # time shifts back by 0.6 beats
+
                    # we now honour the original sleep 1 and the
-                   # sleep 0.5 within the time_warp block, but
-                   # any time shift delta has been removed
-play 70            #=> plays at 1.5",
+                   # sleep 0.5 within the time_warp block is
+                   # ignored including the 0.1 shift offset
+
+play 70            #=> plays at 1",
 
         "# shift backwards in time
 
@@ -1011,12 +1057,11 @@ time_warp -0.1 do
   sleep 0.5
   play 80          #=> plays at 1.4
                    # time shifts forward by 0.1 beats
-                   # however, the sleep 0.5 is still accounted for
 end
                    # we now honour the original sleep 1 and the
-                   # sleep 0.5 within the time_warp block, but
-                   # any time shift delta has been removed
-play 70            #=> plays at 1.5",
+                   # sleep 0.5 within the time_warp block is
+                   # ignored, including the -0.1 offset
+play 70            #=> plays at 1",
 
         "# Ticks count linearly through time_warp
 
@@ -1256,6 +1301,18 @@ end
   puts tick(:foo) #=> 1
   puts tick(:foo) #=> 2
   puts tick(:bar) #=> 0 # tick :bar is independent of tick :foo
+  ",
+  "
+  # You can tick by more than increments of 1
+  # using the step: opt
+
+  puts tick             #=> 0
+  puts tick             #=> 1
+  puts tick             #=> 2
+  puts tick(step: 2)    #=> 4
+  puts tick(step: 2)    #=> 6
+  puts tick(step: 10)   #=> 16
+  puts tick             #=> 17
   ",
   " # Each_live loop has its own separate ticks
   live_loop :fast_tick do
@@ -1558,31 +1615,49 @@ end"
       ]
 
 
-
+      # helper for spread
+      def redistribute(v1, v2)
+        vNew = []
+        while v1.length > 0 && v2.length > 0
+          a1 = v1.shift
+          a2 = v2.shift
+          vNew.unshift(a1 + a2)
+        end
+        if v1.length > 0 then
+          [vNew, v1]
+        else
+          [vNew, v2] # v2 might be empty, but that's fine
+        end
+      end
 
       def spread(num_accents, size, *args)
         args_h = resolve_synth_opts_hash_or_array(args)
         beat_rotations = args_h[:rotate]
         res = []
-        # if someone requests 9 accents in a bar of 8 beats
+        # if someone requests 8 or more accents in a bar of 8 beats
         # default to filling the output with accents
-        if num_accents > size
+        # (rotation is futile here)
+        if num_accents >= size # changed to >=, so v2 is not empty below
           res = [true] * size
           return res.ring
         end
 
-        size.times do |i|
-          # makes a boolean based on the index
-          # true is an accent, false is a rest
-          res << ((i * num_accents % size) < num_accents)
+        # new part
+        v1 = [[true]] * num_accents
+        v2 = [[false]] * (size - num_accents)
+        # If v2 not empty (thats given here), call at least once.
+        (v1, v2) = redistribute(v1,v2)
+        # End condition: v2 empty or has just one element
+        while v2.length > 1
+          (v1, v2) = redistribute(v1,v2)
         end
+        res = (v1 + v2).flatten
 
         if beat_rotations && beat_rotations.is_a?(Numeric)
           beat_rotations = beat_rotations.abs
-          while beat_rotations > 0 do
+          while beat_rotations > 0
             beat_rotations -= 1 if res.rotate!.first == true
           end
-
           res.ring
         else
           res.ring
@@ -1666,6 +1741,8 @@ end"
 
 
       def range(start, finish, *args)
+        start = start.to_f
+        finish = finish.to_f
         if is_list_like?(args) && args.size == 1 && args.first.is_a?(Numeric)
           # Allow one optional arg for legacy reasons. Versions earlier
           # than v2.5 allowed: range(1, 10, 2)
@@ -1673,7 +1750,8 @@ end"
           inclusive = false
         else
           args_h = resolve_synth_opts_hash_or_array(args)
-          step_size = args_h[:step] || 1
+          step_size = args_h[:step] || 1.0
+          step_size = step_size.to_f
           inclusive = args_h[:inclusive]
         end
 
@@ -1731,6 +1809,8 @@ end"
 
 
       def line(start, finish, *args)
+        start = start.to_f
+        finish = finish.to_f
         return [].ring if start == finish
         args_h = resolve_synth_opts_hash_or_array(args)
         num_slices = args_h[:steps] || 4
@@ -1755,7 +1835,7 @@ end"
                            :inclusive => "boolean value representing whether or not to include finish value in line"},
           accepts_block:  false,
           memoize: true,
-          doc:            "Create a ring buffer representing a straight line between start and finish of num_slices elements. Num slices defaults to `8`. Indexes wrap around positively and negatively. Similar to `range`.",
+          doc:            "Create a ring buffer representing a straight line between start and finish of steps elements. Steps defaults to `4`. Indexes wrap around positively and negatively. Similar to `range`.",
           examples:       [
         "(line 0, 4, steps: 4)    #=> (ring 0.0, 1.0, 2.0, 3.0)",
         "(line 5, 0, steps: 5)    #=> (ring 5.0, 4.0, 3.0, 2.0, 1.0)",
@@ -2566,10 +2646,15 @@ end
         raise ArgumentError, "defonce must be called with a do/end block" unless block
         args_h = resolve_synth_opts_hash_or_array(opts)
         if args_h[:override] || !(@user_methods.method_defined? name)
-          val = block.yield
-          val_block = lambda{val}
+          val_block = lambda{:undefined}
           define(name, &val_block)
+          in_thread do
+            val = block.yield
+            val_block = lambda{val}
+            define(name, &val_block)
+          end
           __info "Evaluating defonce #{name}"
+
         else
           __info "Not re-evaluating defonce #{name}"
         end
@@ -2690,21 +2775,6 @@ end
   3.times do
     foo
   end",]
-
-
-
-
-      # def on_keypress(&block)
-      #   @keypress_handlers[:foo] = block
-      # end
-      # doc name:           :on_keypress,
-      #     summary:        "",
-      #     args:           [],
-      #     opts:           nil,
-      #     accepts_block:  true,
-      #     doc:            "",
-      #     examples:       [],
-      #     hide:           true
 
 
 
@@ -3062,8 +3132,8 @@ Does not consume a random value from the stream. Therefore, multiple sequential 
   print rand_look(0.5) #=> will print a number like 0.375030517578125 to the output pane
   print rand_look(0.5) #=> will print the same number again
   print rand_look(0.5) #=> will print the same number again
-  print rand_(0.5) #=> will print a different random number
-  print rand_look(0.5) #=> will print the same number as the prevoius line again."
+  print rand(0.5) #=> will print a different random number
+  print rand_look(0.5) #=> will print the same number as the previous line again."
       ]
 
 
@@ -3811,6 +3881,7 @@ Affected by calls to `use_bpm`, `with_bpm`, `use_sample_bpm` and `with_sample_bp
 
       def use_sched_ahead_time t
         __system_thread_locals.set(:sonic_pi_spider_sched_ahead_time, t)
+        __system_thread_locals.set(:sonic_pi_spider_real_time_mode, false)
       end
       doc name:          :use_sched_ahead_time,
           introduced:    Version.new(3,0,0),
@@ -3842,7 +3913,8 @@ end
 
 
       def use_real_time
-        use_sched_ahead_time 0
+        __system_thread_locals.set(:sonic_pi_spider_sched_ahead_time, 0)
+        __system_thread_locals.set(:sonic_pi_spider_real_time_mode, true)
       end
       doc name:          :use_real_time,
           introduced:    Version.new(3,0,0),
@@ -3861,7 +3933,16 @@ See `use_sched_ahead_time` for a version of this function which allows you to se
 
 
       def with_real_time(&blk)
-        with_sched_ahead_time 0, &blk
+        raise ArgumentError, "with_real_time must be called with a do/end block. Perhaps you meant use_real_time" unless blk
+        current_sat = __system_thread_locals.get(:sonic_pi_spider_sched_ahead_time)
+        current_rtm = __system_thread_locals.get(:sonic_pi_spider_real_time_mode)
+        __system_thread_locals.set(:sonic_pi_spider_sched_ahead_time, 0)
+        __system_thread_locals.set(:sonic_pi_spider_real_time_mode, true)
+        res = blk.call
+        __system_thread_locals.set(:sonic_pi_spider_sched_ahead_time, current_sat)
+        __system_thread_locals.set(:sonic_pi_spider_real_time_mode, current_rtm)
+        res
+
       end
       doc name:          :with_real_time,
           introduced:    Version.new(3,0,0),
@@ -3883,8 +3964,9 @@ See `with_sched_ahead_time` for a version of this function which allows you to s
       def with_sched_ahead_time t, &blk
         raise ArgumentError, "with_sched_ahead_time must be called with a do/end block. Perhaps you meant use_sched_ahead_time" unless blk
         current_sat = __system_thread_locals.get(:sonic_pi_spider_sched_ahead_time)
-        res = blk.call
         __system_thread_locals.set(:sonic_pi_spider_sched_ahead_time, t)
+        res = blk.call
+        __system_thread_locals.set(:sonic_pi_spider_sched_ahead_time, current_sat)
         res
       end
       doc name:          :with_sched_ahead_time,

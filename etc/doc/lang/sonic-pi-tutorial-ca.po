@@ -4,16 +4,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sonic Pi\n"
-"PO-Revision-Date: 2018-01-04 14:05+0000\n"
+"PO-Revision-Date: 2019-07-18 17:05+0000\n"
 "Last-Translator: Pau Monfort <paubarrina@gmail.com>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/sonic-"
-"pi/tutorial/ca/>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/sonic-pi/"
+"tutorial/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: 01-Welcome-to-Sonic-Pi.md:1
 msgid "1 Welcome to Sonic Pi"
@@ -513,7 +513,7 @@ msgstr ""
 
 #: 01.2-Exploring-the-Interface.md:71
 msgid "G. Help System"
-msgstr ""
+msgstr "G. Sistema d'ajuda"
 
 #: 01.2-Exploring-the-Interface.md:73
 msgid ""
@@ -524,10 +524,17 @@ msgid ""
 "ynths, samples, examples, FX and a full list of all the functions Sonic Pi pro"
 "vides for coding music."
 msgstr ""
+"Una de les parts més importants de la interfície de Sonic Pi és el sistema "
+"d'ajuda que apareix a la part inferior de la finestra. Pot ser activat/"
+"desactivat clickant a botó blau *Ajuda*. Aquest sistema d'ajuda conté "
+"informació sobre tots els aspectes de Sonic Pi incloent aquest tutorial, una "
+"llista dels sintetitzadors disponibles, samples, exemples, efectes (FX) i "
+"una llista complerta de tots els mètodes que Sonic Pi proveeix per crear "
+"música programàticament."
 
 #: 01.2-Exploring-the-Interface.md:81
 msgid "H. Scope Viewer"
-msgstr ""
+msgstr "H. Visor osciloscòpic"
 
 #: 01.2-Exploring-the-Interface.md:83
 msgid ""
@@ -541,14 +548,23 @@ msgid ""
 " you to draw pretty pictures with sound (https://en.wikipedia.org/wiki/Lissajo"
 "us_curve)."
 msgstr ""
+"El visor osciloscòpic et permet veure el so que estàs escoltant. Podeu veure "
+"fàcilment que l'ona de serra sembla una serra i que el xiulet bàsic és una "
+"curva d'ona sinusoïdal. També podeu veure la diferència entre sons forts i "
+"fluixos per la mida de les línies. Hi ha 3 visors per jugar - el que apareix "
+"per defecte és un visor que combina els canals esquerre i dret, i hi ha un "
+"visor estèreo que dibuixa una ona separada per cada canal. Finalment hi ha "
+"un visor de corba Lissajous que mostrarà la relació de fase entre els canals "
+"esquerre i dret i us permetrà dibuixar imatges boniques amb so "
+"(https://ca.wikipedia.org/wiki/Corba_de_Lissajous)."
 
 #: 01.3-Learning-through-Play.md:1
 msgid "1.3 Learning through Play"
-msgstr ""
+msgstr "1.3 Aprendre jugant"
 
 #: 01.3-Learning-through-Play.md:3
 msgid "Learning through Play"
-msgstr ""
+msgstr "Aprendre jugant"
 
 #: 01.3-Learning-through-Play.md:5
 msgid ""
@@ -557,10 +573,13 @@ msgid ""
 "fore you know it you'll have accidentally learned how to code, compose and per"
 "form."
 msgstr ""
+"Sonic Pi us anima a aprendre computació i música a través del joc i "
+"l'experimentació. El més important és que estigues gaudint i, abans que te "
+"n'adones, estaràs aprenent a programar, compondre i interpretar."
 
 #: 01.3-Learning-through-Play.md:10
 msgid "There are no mistakes"
-msgstr ""
+msgstr "No hi ha errades"
 
 #: 01.3-Learning-through-Play.md:12
 msgid ""
@@ -575,10 +594,20 @@ msgid ""
 "ound, manipulate it and morph it into something awesome. The crowd will go *wi"
 "ld*."
 msgstr ""
+"Ja que estem parlant d'açò, permeteu-me donar-vos un consell que he aprés al "
+"llarg dels meus anys programant música en viu: *no hi ha errades, només "
+"oportunitats*. Això és quelcom que he escoltat sovint en relació al jazz, "
+"però funciona de la mateixa manera en la programació en viu. No importa la "
+"teua experiència -de complet novell fins a un experimentat Algoraver, alguna "
+"vegada executaràs codi que sorgisca de manera inesperada. Potser sone "
+"increïblement bé -en aquest cas, endavant. O potser sone malament o fora de "
+"lloc. Però no importa què haja passat -allò que val és el que faràs després "
+"amb això. Pren el so, manipula'l i converteix-lo en quelcom al·lucinant. El "
+"públic embogirà."
 
 #: 01.3-Learning-through-Play.md:24
 msgid "Start Simple"
-msgstr ""
+msgstr "Comenceu a poc a poc"
 
 #: 01.3-Learning-through-Play.md:26
 msgid ""
@@ -590,22 +619,30 @@ msgid ""
 "with it and then see what new ideas it gives you. Before long you'll be too bu"
 "sy having fun and making real progress."
 msgstr ""
+"Quan esteu aprenent, és temptador voler fer coses impressionants *ja*. No "
+"obstant això, guardeu aquest desig com un objectiu que assolireu *més "
+"endavant*. Per ara, penseu en *el més senzill* que pugueu escriure que puga "
+"ser divertit i gratificant, que siga una passa xicoteta cap a eixa idea "
+"impressionant que teníeu abans al vostre cap. Una vegada tingueu una idea "
+"senzilla d'aquest pas, aleshores prova a construir-la, juga i veges quines "
+"idees noves et fa vindre a la ment. En poc de temps estaràs massa ocupat "
+"gaudint i assolint un progrés real."
 
 #: 01.3-Learning-through-Play.md:35
 msgid "Just make sure to share your work with others!"
-msgstr ""
+msgstr "Tan sols assegureu-vos de compartir el vostre treball amb la resta!"
 
 #: 02-Synths.md:1
 msgid "2 Synths"
-msgstr ""
+msgstr "2 sintetitzadors"
 
 #: 02-Synths.md:3 02.3-Switching-Synths.md:11
 msgid "Synths"
-msgstr ""
+msgstr "Sintetitzadors"
 
 #: 02-Synths.md:5
 msgid "OK, enough of the intros - let's get into some sound."
-msgstr ""
+msgstr "D'acord, ja està bé d'introduccions - endinsem-nos en el so."
 
 #: 02-Synths.md:7
 msgid ""
@@ -616,6 +653,12 @@ msgid ""
 " Sonic Pi gives you much of that power in a very simple and approachable manne"
 "r."
 msgstr ""
+"En aquesta secció abastarem els conceptes bàsics de desencadenar i "
+"manipular, que no és més que una paraula rebuscada per a quelcom que "
+"produeix sons. Típicament els sintetitzadors són bastant complicats d'usar -"
+"especialment els sintetitzadors analògics modulars, amb tants cables que els "
+"connecten. No obstant això, Sonic Pi us dona molt d'aquest poder d'una "
+"manera més senzilla i accessible."
 
 #: 02-Synths.md:14
 msgid ""
@@ -623,23 +666,26 @@ msgid ""
 "et very deep into very sophisticated sound manipulation if that's your thing. "
 "Hold on to your hats..."
 msgstr ""
+"No us confongueu amb la immediata senzillesa de la interfície de Sonic Pi. "
+"Podeu arribar a manipular amb molta profunditat el so, si això us interessa. "
+"Estigueu a l'aguait..."
 
 #: 02.1-Your-First-Beeps.md:1
 msgid "2.1 Your First Beeps"
-msgstr ""
+msgstr "2.1 Els primers sons"
 
 #: 02.1-Your-First-Beeps.md:3
 msgid "Your First Beeps"
-msgstr ""
+msgstr "Els primers sons"
 
 #: 02.1-Your-First-Beeps.md:5
 msgid "Take a look at the following code:"
-msgstr ""
+msgstr "Fes una ullada al codi següent:"
 
 #: 02.1-Your-First-Beeps.md:7 02.4-Durations-with-Envelopes.md:49
 #, no-wrap
 msgid "play 70"
-msgstr ""
+msgstr "play 70"
 
 #: 02.1-Your-First-Beeps.md:11
 msgid ""
@@ -647,34 +693,40 @@ msgid ""
 "at the top of the app (the big white space under the Run button). Now, press R"
 "un..."
 msgstr ""
+"Ací comença tot. Endavant, copieu i enganxeu-ho dintre de la finestra "
+"superior de l'aplicació (aquell espai gran en blanc davall del botó Run "
+"-executar-). Ara, prem Run..."
 
 #: 02.1-Your-First-Beeps.md:15
 msgid "Beep!"
-msgstr ""
+msgstr "Piiip!"
 
 #: 02.1-Your-First-Beeps.md:17
 msgid "Intense. Press it again. And again. *And again...*"
-msgstr ""
+msgstr "Bo! Premeu-lo una altra vegada. i una altra. *I una altra...*"
 
 #: 02.1-Your-First-Beeps.md:19
 msgid ""
 "Woah, crazy, I'm sure you could keep doing that all day. But wait, before you "
 "lose yourself in an infinite stream of beeps, try changing the number:"
 msgstr ""
+"Quina bogeria! Estic segur que podríeu seguir així la resta del dia. Però "
+"espereu... Abans de perdre-vos en un bucle infinit de sons, proveu a canviar "
+"el número:"
 
 #: 02.1-Your-First-Beeps.md:23
 #, no-wrap
 msgid "play 75"
-msgstr ""
+msgstr "play 75"
 
 #: 02.1-Your-First-Beeps.md:27
 msgid "Can you hear the difference? Try a lower number:"
-msgstr ""
+msgstr "Podeu escoltar la diferència? Proveu amb un número inferior:"
 
 #: 02.1-Your-First-Beeps.md:29
 #, no-wrap
 msgid "play 60"
-msgstr ""
+msgstr "reprodueix 60"
 
 #: 02.1-Your-First-Beeps.md:33
 msgid ""
@@ -687,6 +739,14 @@ msgid ""
 "just so happens that the 4th octave C is number 60. Go ahead and play it: `pla"
 "y 60`."
 msgstr ""
+"Així que els números inferiors fan sons més greus i números superiors fan "
+"sons més aguts. De la mateixa manera que en un piano, on les tecles de la "
+"part greu (el costat de la mà esquerra) fan notes més greus i les tecles de "
+"la part aguda  (el costat de la mà dreta) fan notes més agudes. De fet, els "
+"números es relacionen amb les tecles del piano. `play 47`significa tocar la "
+"47a nota del piano; `play 48` es una nota més amunt (la tecla següent a la "
+"dreta). Això significa que  la tecla 60 és el Do de la 4a octava. Proveu-ho "
+"amb: `play 60`."
 
 #: 02.1-Your-First-Beeps.md:42
 msgid ""
@@ -697,13 +757,15 @@ msgstr ""
 
 #: 02.1-Your-First-Beeps.md:46 08.2-Chords.md:3
 msgid "Chords"
-msgstr ""
+msgstr "Acords"
 
 #: 02.1-Your-First-Beeps.md:48
 msgid ""
 "Playing a note is quite fun, but playing many at the same time can be even bet"
 "ter. Try it:"
 msgstr ""
+"Tocar una nota és bastant divertit, però tocar-ne més d'una al mateix temps "
+"pot ser encara millor. Proveu-ho:"
 
 #: 02.1-Your-First-Beeps.md:51
 #, no-wrap
@@ -722,7 +784,7 @@ msgstr ""
 
 #: 02.1-Your-First-Beeps.md:61
 msgid "Melody"
-msgstr ""
+msgstr "Melodia"
 
 #: 02.1-Your-First-Beeps.md:63
 msgid ""
@@ -775,7 +837,7 @@ msgstr ""
 
 #: 02.1-Your-First-Beeps.md:97
 msgid "Traditional Note Names"
-msgstr ""
+msgstr "Noms tradicionals de les notes"
 
 #: 02.1-Your-First-Beeps.md:99
 msgid ""

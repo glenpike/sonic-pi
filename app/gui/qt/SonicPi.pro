@@ -34,7 +34,11 @@ macx {
   QMAKE_CXXFLAGS += -Wall -Werror -Wextra -Wno-unused-variable -Wno-unused-parameter
   CONFIG += warn_off
   TARGET = 'Sonic Pi'
-  LIBS += -lqscintilla2
+  LIBS += -lqscintilla2_qt5
+  debug {
+    QMAKE_LFLAGS += -g -O0
+    QMAKE_CXXFLAGS += -g -O0
+  }
 }
 
 # Windows only
@@ -54,37 +58,41 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
            mainwindow.cpp \
-           sonicpilexer.cpp \
-           sonicpiapis.cpp \
-           sonicpiscintilla.cpp \
-           oschandler.cpp \
-           oscsender.cpp \
-           sonicpilog.cpp \
-           sonic_pi_osc_server.cpp \
-           sonic_pi_udp_osc_server.cpp \
-           sonic_pi_tcp_osc_server.cpp \
-           sonicpitheme.cpp \
-           scope.cpp \
-           infowidget.cpp
+           utils/sonicpiapis.cpp \
+           osc/oschandler.cpp \
+           osc/oscsender.cpp \
+           osc/sonic_pi_osc_server.cpp \
+           osc/sonic_pi_udp_osc_server.cpp \
+           osc/sonic_pi_tcp_osc_server.cpp \
+           widgets/sonicpilog.cpp \
+           widgets/infowidget.cpp \
+           widgets/sonicpiscintilla.cpp \
+           widgets/sonicpilexer.cpp \
+           widgets/settingswidget.cpp \
+           model/sonicpitheme.cpp \
+           visualizer/scope.cpp
 
 HEADERS  += mainwindow.h \
-            oscpkt.hh \
-            udp.hh \
-            sonicpilexer.h \
-            sonicpilog.h \
-            sonicpiapis.h \
-            sonicpiscintilla.h \
-            oschandler.h \
-            oscsender.h \
-            sonic_pi_osc_server.h \
-            sonic_pi_udp_osc_server.h \
-            sonic_pi_tcp_osc_server.h \
-            ruby_help.h \
-            sonicpitheme.h \
-            scope.h \
-            infowidget.h
+            widgets/sonicpilog.h \
+            widgets/infowidget.h \
+            widgets/sonicpilexer.h \
+            widgets/sonicpiscintilla.h \
+            widgets/settingswidget.h \
+            utils/sonicpiapis.h \
+            utils/ruby_help.h \
+            osc/oscpkt.hh \
+            osc/udp.hh \
+            osc/oschandler.h \
+            osc/oscsender.h \
+            osc/sonic_pi_osc_server.h \
+            osc/sonic_pi_udp_osc_server.h \
+            osc/sonic_pi_tcp_osc_server.h \
+            model/sonicpitheme.h \
+            model/settings.h \
+            visualizer/scope.h
 
-TRANSLATIONS = lang/sonic-pi_bs.ts \
+TRANSLATIONS = lang/sonic-pi_bg.ts \
+    lang/sonic-pi_bs.ts \
                lang/sonic-pi_ca.ts \
                lang/sonic-pi_cs.ts \
                lang/sonic-pi_da.ts \
@@ -93,14 +101,18 @@ TRANSLATIONS = lang/sonic-pi_bs.ts \
                lang/sonic-pi_en_US.ts \
                lang/sonic-pi_es.ts \
                lang/sonic-pi_et.ts \
+    lang/sonic-pi_fa.ts \
                lang/sonic-pi_fi.ts \
                lang/sonic-pi_fr.ts \
+    lang/sonic-pi_gl.ts \
+    lang/sonic-pi_he.ts \
                lang/sonic-pi_hi.ts \
                lang/sonic-pi_hu.ts \
                lang/sonic-pi_id.ts \
                lang/sonic-pi_is.ts \
                lang/sonic-pi_it.ts \
                lang/sonic-pi_ja.ts \
+    lang/sonic-pi_ka.ts \
                lang/sonic-pi_ko.ts \
                lang/sonic-pi_nb.ts \
                lang/sonic-pi_nl.ts \
@@ -109,9 +121,13 @@ TRANSLATIONS = lang/sonic-pi_bs.ts \
                lang/sonic-pi_pt_BR.ts \
                lang/sonic-pi_ro.ts \
                lang/sonic-pi_ru.ts \
+    lang/sonic-pi_sk.ts \
+    lang/sonic-pi_sl.ts \
                lang/sonic-pi_sv.ts \
                lang/sonic-pi_tr.ts \
+    lang/sonic-pi_ug.ts \
                lang/sonic-pi_uk.ts \
+    lang/sonic-pi_vi.ts \
                lang/sonic-pi_zh-Hans.ts \
                lang/sonic-pi_zh.ts \
                lang/sonic-pi_zh_HK.ts \

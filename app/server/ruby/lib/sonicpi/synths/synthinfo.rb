@@ -1898,7 +1898,7 @@ Also, note that audio in isn't yet supported on Raspberry Pi."
       end
 
       def synth_name
-        "synth_violin"
+        "blade"
       end
 
       def doc
@@ -2093,7 +2093,7 @@ Also, note that audio in isn't yet supported on Raspberry Pi."
       end
 
       def doc
-        "A basic piano synthesiser. Note that due to the plucked nature of this synth the envelope opts such as `attack:`, `sustain:` and `release:` do not work as expected. They can only shorten the natural length of the note, not prolong it. Also, the `note:` opt will only honour whole tones."
+        "A basic piano synthesiser. Note that due to the plucked nature of this synth the envelope opts such as `attack:`, `sustain:` and `release:` do not work as expected. They can only shorten the natural length of the note, not prolong it."
       end
 
       def arg_defaults
@@ -2110,7 +2110,7 @@ Also, note that audio in isn't yet supported on Raspberry Pi."
           :pan_slide => 0,
           :pan_slide_shape => 1,
           :pan_slide_curve => 0,
-          :vel => 0.2,
+          :vel => 0.8,
           :attack => 0,
           :decay => 0,
           :sustain => 0,
@@ -2127,7 +2127,7 @@ Also, note that audio in isn't yet supported on Raspberry Pi."
         {
           :note =>
           {
-            :doc => "Note to play. Either a MIDI number or a symbol representing a note. For example: `30`, `52`, `:C`, `:C2`, `:Eb4`, or `:Ds3`. Note that the piano synth can only play whole tones such as 60 and does not handle floats such as 60.3",
+            :doc => "Note to play. Either a MIDI number or a symbol representing a note. For example: `30`, `52`, 56.5, `:C`, `:C2`, `:Eb4`, or `:Ds3`.",
             :validations => [v_positive(:note), v_less_than(:note, 231)],
             :modulatable => true
           },
@@ -3089,7 +3089,7 @@ Steal This Sound,  Mitchell Sigman"
       end
 
       def doc
-        "Slightly modified supersaw implementation beased on http://sccode.org/1-4YS"
+        "Slightly modified supersaw implementation based on http://sccode.org/1-4YS"
       end
 
       def arg_defaults
@@ -4683,7 +4683,7 @@ A decent range of Q factors for naturally sounding boosts/cuts is 0.6 to 1.
           :room =>
           {
             :doc => "The room size in squared metres",
-            :validations => [v_greater_than_oet(:room, 0)],
+            :validations => [v_greater_than_oet(:room, 1)],
             :modulatable => true
           },
 
@@ -6832,6 +6832,11 @@ Use FX `:band_eq` with a negative db for the opposite effect - to attenuate a gi
         false
       end
 
+
+      def doc
+        "Forces all audio through a hyperbolic tangent function which has the effect of acting like distorted limiter. It works by folding loud signals back in on itself. The louder the input signal, the more folding occurs - resulting in increased strange harmonics and distortion. This folding also has the effect of limiting the outgoing signal, therefore to increase the output amplitude use the `amp:` opt and to increase the folding/distortion use the `pre_amp:` opt. "
+      end
+
       def arg_defaults
         super.merge({
           :krunch => 5,
@@ -7238,7 +7243,7 @@ Use FX `:band_eq` with a negative db for the opposite effect - to attenuate a gi
           :phase_offset => 0,
           :wave => 2,
           :invert_wave => 0,
-          :depth => 5,
+          :depth => 0.5,
           :depth_slide => 0,
           :depth_slide_shape => 1,
           :depth_slide_curve => 0

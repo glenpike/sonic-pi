@@ -4,16 +4,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sonic Pi\n"
-"PO-Revision-Date: 2017-12-06 19:50+0000\n"
-"Last-Translator: Álvaro Cáceres Muñoz <alvarocaceresmunoz@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/sonic-pi/tutorial/"
-"es/>\n"
+"PO-Revision-Date: 2019-03-28 18:04+0000\n"
+"Last-Translator: Paola García <papodolopus@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/sonic-pi/"
+"tutorial/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #: 01-Welcome-to-Sonic-Pi.md:1
 msgid "1 Welcome to Sonic Pi"
@@ -2051,7 +2051,7 @@ msgstr "sample :ambi_lunar_land, amp: 0.5"
 
 #: 03.2-Sample-Params.md:18
 msgid "Panning samples"
-msgstr "Paneando samples"
+msgstr "Paneando los Samples"
 
 #: 03.2-Sample-Params.md:20
 msgid ""
@@ -2081,44 +2081,39 @@ msgstr ""
 "`:loop_amen` ."
 
 #: 03.2-Sample-Params.md:33
-#, fuzzy
 msgid ""
 "Finally, note that if you set some synth defaults with `use_synth_defaults` (w"
 "hich we will discuss later), these will be ignored by `sample`."
 msgstr ""
-"Finalmente, nota que si seteas algunos sintetizadores por defecto con `use_syn"
-"th_defaults` (que discutiremos luego), estos serán ignorados por `sample`."
+"Finalmente, nota que si seteas algunos sintetizadores por defecto con "
+"`use_synth_defaults` (que discutiremos luego), estos serán ignorados por "
+"`sample`."
 
 #: 03.3-Stretching-Samples.md:1
-#, fuzzy
 msgid "3.3 Stretching Samples"
 msgstr "3.3 Estirando Samples"
 
 #: 03.3-Stretching-Samples.md:3
-#, fuzzy
 msgid "Stretching Samples"
 msgstr "Estirando Samples"
 
 #: 03.3-Stretching-Samples.md:5
-#, fuzzy
 msgid ""
 "Now that we can play a variety of synths and samples to create some music, it'"
 "s time to learn how to modify both the synths and samples to make the music ev"
 "en more unique and interesting. First, let's explore the ability to *stretch* "
 "and *squash* samples."
 msgstr ""
-"Ahora que ya podemos tocar una variedad de synths y samples para crear música,"
-" es tiempo de aprender a modificar tanto los synths como los samples para hace"
-"r la música más interesante y única. Primero, exploremos la habilidad de \"esti"
-"rar\" y \"aplastar\" los samples."
+"Ahora que ya podemos tocar una variedad de sintetizadores y samples para "
+"crear música, es tiempo de aprender a modificar tanto los sintetizadores "
+"como los samples para hacer la música incluso más interesante y única. "
+"Primero, exploremos la habilidad de *estirar* y *aplastar* los samples."
 
 #: 03.3-Stretching-Samples.md:10
-#, fuzzy
 msgid "Sample Representation"
-msgstr "Representación de Sampleos"
+msgstr "Representación de Samples"
 
 #: 03.3-Stretching-Samples.md:12
-#, fuzzy
 msgid ""
 "Samples are pre-recorded sounds stored as numbers which represent how to move "
 "the speaker cone to reproduce the sound. The speaker cone can move in and out,"
@@ -2130,29 +2125,27 @@ msgid ""
 "d. However, it's also fun to change the speed with which the numbers are fed t"
 "o the speaker to change the sound."
 msgstr ""
-"Los Samples son sonidos pregrabados guardados como números que representan cóm"
-"o mover los conos de los parlantes para reproducir sonidos, estos conos se pue"
-"den mover hacia dentro y hacia afuera, así que los números sólo deben represen"
-"tar ese movimiento en cada momento dado. Para poder reproducir fielmente un so"
-"nido, el sample debe guardar miles de números por segundo, Sonic Pi toma esta "
-"lista de números y los alimenta a la velocidad correcta para mover los parlant"
-"es de tu computadora a la velocidad correcta para reproducir sonido. Sin embar"
-"go, también es divertido cambiar la velocidad a la que los números son aliment"
-"ados al parlante para cambiar el sonido"
+"Los Samples son sonidos pregrabados guardados como números que representan "
+"cómo mover los conos de los parlantes para reproducir sonidos. Estos conos "
+"se pueden mover hacia dentro y hacia afuera, así que los números sólo deben "
+"representar ese movimiento en cada momento dado. Para poder reproducir "
+"fielmente un sonido, el sample debe guardar miles de números por segundo! "
+"Sonic Pi toma esta lista de números y los alimenta a la velocidad correcta "
+"para mover los parlantes de tu ordenador a la velocidad correcta para "
+"reproducir el sonido. Sin embargo, también es divertido cambiar la velocidad "
+"a la que los números son alimentados al parlante para cambiar el sonido."
 
 #: 03.3-Stretching-Samples.md:23
-#, fuzzy
 msgid "Changing Rate"
 msgstr "Cambiando la Velocidad"
 
 #: 03.3-Stretching-Samples.md:25
-#, fuzzy
 msgid ""
 "Let's play with one of the ambient sounds: `:ambi_choir`. To play it with the "
 "default rate, you can pass a `rate:` opt to `sample`:"
 msgstr ""
-"Ejecutemos uno de los sonidos ambiente: `:ambi_choir`. Para tocarlo con la vel"
-"ocidad predeterminada, puedes añadir `rate:` a `sample`:"
+"Vamos a cambiar uno de los sonidos ambientales. Para la modificación de la "
+"velocidad por defecto, se puede agregar 'rate:' a la  'sample':"
 
 #: 03.3-Stretching-Samples.md:28
 #, no-wrap
@@ -2160,13 +2153,12 @@ msgid "sample :ambi_choir, rate: 1"
 msgstr "sample :ambi_choir, rate: 1"
 
 #: 03.3-Stretching-Samples.md:32
-#, fuzzy
 msgid ""
 "This plays it at normal rate (1), so nothing special yet. However, we're free "
 "to change that number to something else. How about `0.5`:"
 msgstr ""
-"Así lo ejecuta a tiempo normal (1), nada especial. Sin embargo, podemos cambia"
-"r ese número a otros. ¿qué tal a `0.5` ?:"
+"Esto lo ejecuta a tiempo normal (1), nada especial. Sin embargo, podemos "
+"cambiar ese número por algo más. ¿Qué tal a `0.5`?:"
 
 #: 03.3-Stretching-Samples.md:35
 #, no-wrap
@@ -2174,29 +2166,26 @@ msgid "sample :ambi_choir, rate: 0.5"
 msgstr "sample :ambi_choir, rate: 0.5"
 
 #: 03.3-Stretching-Samples.md:39
-#, fuzzy
 msgid ""
 "Woah! What's going on here? Well, two things. Firstly, the sample takes twice "
 "as long to play, secondly the sound is an octave lower. Let's explore these th"
 "ings in a little more detail."
 msgstr ""
-"Woah! ¿qué sucedió? Bueno, dos cosas: Primero, el sample se ejecutó en el dobl"
-"e del tiempo; Segundo, sonó una octava más grave. Exploremos todo ello en más "
-"detalle."
+"¡Woah! ¿qué sucedió? Bueno, dos cosas: Primero, el sample se ejecutó en el "
+"doble del tiempo; Segundo, sonó una octava más grave. Exploremos todo esto "
+"en más detalle."
 
 #: 03.3-Stretching-Samples.md:43
-#, fuzzy
 msgid "Let's stretch"
 msgstr "Estiremos"
 
 #: 03.3-Stretching-Samples.md:45
-#, fuzzy
 msgid ""
 "A sample that's fun to stretch and compress is the Amen Break. At normal rate,"
 " we might imagine throwing it into a *drum 'n' bass* track:"
 msgstr ""
-"Un sample que es divertido estirar y comprimir es el Amen Break. A velocidad n"
-"ormal, podemos imaginar poner una pista de *drum 'n' bass*:"
+"Un sample que es divertido estirar y comprimir es el Amen Break. A velocidad "
+"normal, podemos imaginar ponerlo en una pista de *drum 'n' bass*:"
 
 #: 03.3-Stretching-Samples.md:48 03.4-Enveloped-Samples.md:17
 #: 03.5-Partial-Samples.md:9 A.03-coded-beats.md:33 A.12-sample-slicing.md:22
@@ -2205,13 +2194,12 @@ msgid "sample :loop_amen"
 msgstr "sample :loop_amen"
 
 #: 03.3-Stretching-Samples.md:52
-#, fuzzy
 msgid ""
 "However by changing the rate we can switch up genres. Try half speed for *old "
 "school hip-hop*:"
 msgstr ""
-"Sin embargo, cambiando la velocidad podemos cambiar \"géneros\". Intenta con la "
-"mitad de la velocidad para un \"hip hop de vieja escuela\":"
+"Sin embargo, cambiando la velocidad podemos cambiar géneros. Intenta con la "
+"mitad de la velocidad para algo de \"hip hop de la vieja escuela\":"
 
 #: 03.3-Stretching-Samples.md:55 03.5-Partial-Samples.md:16
 #, no-wrap
@@ -2219,9 +2207,8 @@ msgid "sample :loop_amen, rate: 0.5"
 msgstr "sample :loop_amen, rate: 0.5"
 
 #: 03.3-Stretching-Samples.md:59
-#, fuzzy
 msgid "If we speed it up, we enter *jungle* territory:"
-msgstr "Si lo aceleramos, entramos al territorio estilístico de *jungle*:"
+msgstr "Si lo aceleramos, entramos al territorio de *jungle*:"
 
 #: 03.3-Stretching-Samples.md:61 A.17-sample-stretching.md:46
 #, no-wrap
@@ -2229,13 +2216,12 @@ msgid "sample :loop_amen, rate: 1.5"
 msgstr "sample :loop_amen, rate: 1.5"
 
 #: 03.3-Stretching-Samples.md:65
-#, fuzzy
 msgid ""
 "Now for our final party trick - let's see what happens if we use a negative ra"
 "te:"
 msgstr ""
-"Vamos a nuestro último truco - veamos qué sucede si utilizamos una velocidad n"
-"egativa:"
+"Vamos a nuestro último truco - veamos qué sucede si utilizamos una velocidad "
+"negativa:"
 
 #: 03.3-Stretching-Samples.md:68
 #, no-wrap
@@ -2243,22 +2229,20 @@ msgid "sample :loop_amen, rate: -1"
 msgstr "sample :loop_amen, rate: -1"
 
 #: 03.3-Stretching-Samples.md:72
-#, fuzzy
 msgid ""
 "Woah! It plays it *backwards*! Now try playing with lots of different samples "
 "at different rates. Try very fast rates. Try crazy slow rates. See what intere"
 "sting sounds you can produce."
 msgstr ""
-"Ahaa! ¡Se toca al revés! Ahora intenta toca distintos samples y velocidades, t"
-"ales como rápidas y lentísimas, observa qué sucede."
+"Ahaa! ¡Se toca *al revés*! Ahora intenta tocar distintos samples a distintas "
+"velocidades. Intenta con velocidades muy rápidas o lentísimas. Observa qué "
+"sonidos interesantes puedes crear."
 
 #: 03.3-Stretching-Samples.md:76
-#, fuzzy
 msgid "A Simple Explanation of Sample Rate"
-msgstr "Velocidad de sampleo: una explicación sencilla"
+msgstr "Velocidad de Sample: Una explicación sencilla"
 
 #: 03.3-Stretching-Samples.md:78
-#, fuzzy
 msgid ""
 "A useful way to think of samples is as springs. Playback rate is like squashin"
 "g and stretching the spring. If you play the sample at rate 2, you're *squashi"
@@ -2269,56 +2253,53 @@ msgid ""
 "rate), the shorter it gets, the more you stretch (lower rate), the longer it g"
 "ets."
 msgstr ""
-"Una manera sencilla con los sampleos es pensando en ellos como resortes. La ve"
-"locidad de ejecución es como \"estirar\" o \"comprimir\" resortes. Si tocas a velo"
-"cidad 2 estás comprimiendo el resorte a la mitad de su tamaño, por tanto le to"
-"ma la mitad del tiempo en ejecutarse, ya que es más corto. Si ejecutas el samp"
-"leo a la mitad de velocidad, estás en efecto alargándo el resorte, por tanto e"
-"stás doblando su tamaño y toma el doble de tiempo el ejecutarse. Entre más com"
-"primas (mayor velocidad), más corto se vuelve el tiempo y viceversa."
+"Una manera útil de pensar en samples es comparándolos con resortes. Piensa "
+"en la velocidad de ejecución como \"estirar\" o \"comprimir\" el resorte. Si "
+"tocas a velocidad 2 estás *comprimiendo el resorte* a la mitad de su tamaño, "
+"por tanto le toma la mitad del tiempo en ejecutarse, ya que es más corto. Si "
+"ejecutas el sample a la mitad de velocidad, estás en efecto *alargando el "
+"resorte*, por tanto estás doblando su tamaño y el tiempo que le toma "
+"ejecutarse. Entre más comprimas (mayor velocidad), más corto se vuelve, "
+"entre más estires (menor velocidad), más largo se vuelve."
 
 #: 03.3-Stretching-Samples.md:87
-#, fuzzy
 msgid ""
 "Compressing a spring increases its density (the number of coils per cm) - this"
 " is similar to the sample sounding *higher pitched*. Stretching the spring dec"
 "reases its density and is similar to the sound having a *lower pitch*."
 msgstr ""
-"Comprimiendo un resorte incremeta su densidad (el número de embobinados por cm"
-".), lo cual es similar a que el sampleo suene a tonos más altos. Estirándo el "
-"resorte, decrece su densidad y simlarmente el sonido es más grave."
+"Comprimir un resorte incrementa su densidad (el número de \"vueltas\" por "
+"cm.) - esto es similar al sample sonando más *agudo*. Estirar el resorte "
+"disminuye su densidad y es similar al sonido siendo más *grave*."
 
 #: 03.3-Stretching-Samples.md:93
-#, fuzzy
 msgid "The Maths Behind Sample Rate"
-msgstr "La matemática de la velocidad de sampleo"
+msgstr "La matemática detrás de la velocidad de sample"
 
 #: 03.3-Stretching-Samples.md:95
-#, fuzzy
 msgid ""
 "(This section is provided for those that are interested in the details. Please"
 " feel free to skip it...)"
 msgstr ""
-"(Esta sección es para aquellos interesados en los detalles. Eres libre de salt"
-"ártela)"
+"(Esta sección es para aquellos interesados en los detalles. Eres libre de "
+"saltártela...)"
 
 #: 03.3-Stretching-Samples.md:98
-#, fuzzy
 msgid ""
 "As we saw above, a sample is represented by a big long list of numbers represe"
 "nting where the speaker should be through time. We can take this list of numbe"
 "rs and use it to draw a graph which would look similar to this:"
 msgstr ""
-"Como hemos visto, un sample está representado por una larga lista de números r"
-"epresentando adónde debe estar el parlante a través del tiempo. Podemos tomar "
-"este listado de números y usarlo para dibujar un gráfico que sería similar a:"
+"Como hemos visto, un sample está representado por una larga lista de números "
+"representando donde debe de estar el parlante a través del tiempo. Podemos "
+"tomar este listado de números y usarlo para dibujar un gráfico que sería "
+"similar a:"
 
 #: 03.3-Stretching-Samples.md:103
 msgid "![sample graph](../images/tutorial/sample.png)"
 msgstr "![sample graph](../images/tutorial/sample.png)"
 
 #: 03.3-Stretching-Samples.md:105
-#, fuzzy
 msgid ""
 "You might have seen pictures like this before. It's called the *waveform* of a"
 " sample. It's just a graph of numbers. Typically a waveform like this will hav"
@@ -2330,38 +2311,37 @@ msgid ""
 " could also play it back at half rate which would be 22050 points per second t"
 "aking 4 seconds to play back."
 msgstr ""
-"Quizás hayas visto imágenes parecidas a esa. Se llaman \"forma de onda\" de un s"
-"ampleo. Simplemente es la graficación de números. Típicamente una forma de ond"
-"a como ésta tendrá 44100 puntos por segundo de dato (esto debido al teorema de"
-" sampleo de Nyquist-Shannon) Así que si un sample dura 2 segundos, la forma de"
-" onda será representada por 88200 números, alimentándo a los parlantes a una v"
-"elocidad de 44100 puntos por segundo. Claro, podemos también alimentarlos a un"
-"a velocidad doble, que sería de 88200 puntos por segundo, lo cual tomaría sólo"
-" 1 segundo para ser tocado. También podríamos tocarlo a la mitad de velocidad,"
-" lo que daría 22050 puntos por segundo tomando 4 segundos de tiempo de ejecuci"
-"ón."
+"Quizás hayas visto imágenes parecidas a esa. Se llaman \"forma de onda\" de "
+"un sampleo. Simplemente es la graficación de números. Típicamente una forma "
+"de onda como ésta tendrá 44100 puntos por segundo de datos (esto es debido "
+"al teorema de sampleo de Nyquist-Shannon) Así que si el sampleo dura 2 "
+"segundos, la forma de onda será representada por 88200 números, alimentándo "
+"al altavoz a una velocidad de 44100 puntos por segundo. Claro, podemos "
+"también alimentarlos a una velocidad doble, que sería de 88200 puntos por "
+"segundo, lo cual tomaría sólo 1 segundo para ser tocado. También podríamos "
+"tocarlo a la mitad de velocidad, lo que daría 22050 puntos por segundo "
+"tomando 4 segundos de tiempo de ejecución."
 
 #: 03.3-Stretching-Samples.md:116
-#, fuzzy
 msgid "The duration of the sample is affected by the playback rate:"
-msgstr "La duración del sample es afectada por la velocidad de ejecución:"
+msgstr "La duración del sampleo es afectada por la velocidad de ejecución:"
 
 #: 03.3-Stretching-Samples.md:118
 #, fuzzy
 msgid "Doubling the playback rate halves the playback time,"
-msgstr "doblándola, logramos reducir a la mitad el tiempo de ejecución,"
+msgstr ""
+"doblando la reproducción, logramos reducir a la mitad del tiempo de "
+"ejecución,"
 
 #: 03.3-Stretching-Samples.md:119
-#, fuzzy
 msgid "Halving the playback rate doubles the playback time,"
-msgstr "achicándola a la mitad, doblamos el tiempo de ejecución,"
+msgstr "cortando a la mitad la reproducción, doblamos el tiempo de ejecución,"
 
 #: 03.3-Stretching-Samples.md:120
-#, fuzzy
 msgid "Using a playback rate of one fourth quadruples the playback time,"
 msgstr ""
-"usando una velocidad de ejecución de 1/4, cuadruplicamos el tiempo de ejecució"
-"n,"
+"usando una velocidad de ejecución de 1/4, cuadruplicamos el tiempo de "
+"reproducción,"
 
 #: 03.3-Stretching-Samples.md:121
 #, fuzzy
@@ -2377,7 +2357,6 @@ msgstr "Esto lo representaremos con esta fórmula:"
 
 #: 03.3-Stretching-Samples.md:125
 #, no-wrap
-#, fuzzy
 msgid "new_sample_duration = (1 / rate) * sample_duration "
 msgstr "nuevo_sample_ = (1 / velocidad) * duración_sample "
 
@@ -3423,10 +3402,10 @@ msgid ""
 "nd must return a new list of candidates (a list of valid paths to sample files"
 ")."
 msgstr ""
-"`lambda{|a| ... }` - Los Procs con un argumento serán tratados como un filtro "
-"candidato o como una función generadora. Se le pasará la lista de candidatos a"
-"ctuales, y debe devolver una lista nueva de candidatos (es decir, una lista de"
-" rutas válidas a archivos de samples)"
+"`lambda{|a| ... }` - Los procesos con un argumento serán tratados como un "
+"filtro candidato o como una función generadora. Se pasará la lista de "
+"candidatos actuales, y deberá devolver una lista nueva de candidatos (es "
+"decir, una lista de rutas válidas a archivos de samples)."
 
 #: 03.7-Sample-Packs.md:193
 msgid ""
@@ -5638,9 +5617,8 @@ msgid "We'll look into controlling synths in more detail in a later section."
 msgstr "Veremos en más detalle cómo controlar los sintetizadores más tarde."
 
 #: 05.6-Variables.md:133
-#, fuzzy
 msgid "Warning: Variables and Threads"
-msgstr "Variables"
+msgstr "Advertencia: Variables e Hilos"
 
 #: 05.6-Variables.md:135
 msgid ""
@@ -5648,6 +5626,9 @@ msgid ""
 "f things, it is important to know that they should typically only be used loca"
 "lly within a thread. For example, *don't do this*:"
 msgstr ""
+"Si bien las variables son buenas para nombrar cosas y guardar los resultados "
+"de estas, es importante saber que, por lo general, solo deben usarse "
+"localmente dentro de un hilo. Por ejemplo, *no hagas esto*:"
 
 #: 05.6-Variables.md:139
 #, no-wrap
@@ -5663,6 +5644,16 @@ msgid ""
 "  puts \"sorted: \", a\n"
 "end"
 msgstr ""
+"a = (ring 6, 5, 4, 3, 2, 1)\n"
+"live_loop :shuffled do\n"
+"  a = a.shuffle\n"
+"  sleep 0.5\n"
+"end\n"
+"live_loop :sorted do\n"
+"  a = a.sort\n"
+"  sleep 0.5\n"
+"  puts \"sorted: \", a\n"
+"end"
 
 #: 05.6-Variables.md:154
 msgid ""
@@ -5681,11 +5672,16 @@ msgid ""
 msgstr ""
 
 #: 05.6-Variables.md:168
+#, fuzzy
 msgid ""
 "There are two solutions to this. Firstly, *don't use the same variable in mult"
 "iple live loops or threads*. For example, the following code will always print"
 " a sorted list as each live loop has its own separate variable:"
 msgstr ""
+"Hay dos soluciones a este problema. Primero, *no utilices el miso variable "
+"en multiples live loops o subprocesos*. Por ejemplo, el siguiente código "
+"imprimirá siempre una lista ordenada, porque cada live loop tiene su "
+"variable separado:"
 
 #: 05.6-Variables.md:173
 #, no-wrap
@@ -5702,14 +5698,30 @@ msgid ""
 "  puts \"sorted: \", a\n"
 "end"
 msgstr ""
+"live_loop :shuffled do\n"
+"  a = (ring 6, 5, 4, 3, 2, 1)\n"
+"  a = a.shuffle\n"
+"  sleep 0.5\n"
+"end\n"
+"live_loop :sorted do\n"
+"  a = (ring 6, 5, 4, 3, 2, 1)\n"
+"  a = a.sort\n"
+"  sleep 0.5\n"
+"  puts \"sorted: \", a\n"
+"end"
 
 #: 05.6-Variables.md:188
+#, fuzzy
 msgid ""
 "However, sometimes we do want to share things across threads. For example, the"
 " current key, BPM, synth etc. In these cases, the solution is to use Sonic Pi'"
 "s special thread-safe state system via the fns `get` and `set`. This is discus"
 "sed later on in section 10."
 msgstr ""
+"Sin embargo, a veces queremos compartir datos entre hilos. Por ejemplo, la "
+"clave actual, la velocidad, el sintetizador etc. En estos casos, se puede "
+"utilizar el sistema especial \"thread-safe\" de Sonic Pi a través de los fns "
+"`get` y `set`. Esto sera discutido luego en la sección 10."
 
 #: 05.7-Thread-Synchronisation.md:1
 #, fuzzy
@@ -8831,12 +8843,14 @@ msgid ""
 msgstr "Mira la documentación de `tick`, donde tienes muchos ejemplos.."
 
 #: 10-State.md:1
+#, fuzzy
 msgid "10 Time State"
-msgstr ""
+msgstr "10 Estado del Tiempo (Time State)"
 
 #: 10-State.md:3
+#, fuzzy
 msgid "Time State"
-msgstr ""
+msgstr "Estado del Tiempo (Time State)"
 
 #: 10-State.md:5
 msgid ""
@@ -8864,16 +8878,17 @@ msgid ""
 msgstr ""
 
 #: 10-State.md:24
+#, fuzzy
 msgid "Meet `get` and `set`..."
-msgstr ""
+msgstr "Dales la bienvenida a `get` y `set`..."
 
 #: 10.1-Set-and-Get.md:1
 msgid "10.1 Set and Get"
-msgstr ""
+msgstr "10.1 Set y Get"
 
 #: 10.1-Set-and-Get.md:3
 msgid "Set and Get"
-msgstr ""
+msgstr "Set y Get"
 
 #: 10.1-Set-and-Get.md:5
 msgid ""
@@ -8884,7 +8899,7 @@ msgstr ""
 
 #: 10.1-Set-and-Get.md:9
 msgid "Set"
-msgstr ""
+msgstr "Set"
 
 #: 10.1-Set-and-Get.md:11
 msgid "To store information into the Time State we need two things:"
@@ -8892,28 +8907,35 @@ msgstr ""
 
 #: 10.1-Set-and-Get.md:13
 msgid "the information we want to store,"
-msgstr ""
+msgstr "los datos que queremos almacenar,"
 
 #: 10.1-Set-and-Get.md:14
+#, fuzzy
 msgid "a unique name (key) for the information."
-msgstr ""
+msgstr "un nombre único (clave) para los datos."
 
 #: 10.1-Set-and-Get.md:16
+#, fuzzy
 msgid ""
 "For example, we might want to store the number `3000` with the key `:intensity"
 "`. This is possible using the `set` function:"
 msgstr ""
+"Por ejemplo, puede ser que queremos almacenar el número `3000` con la clave "
+"`:intensity`. Eso es posible utilizando la función `set`:"
 
 #: 10.1-Set-and-Get.md:19
 #, no-wrap
 msgid "set :intensity, 3000"
-msgstr ""
+msgstr "set :intensity, 3000"
 
 #: 10.1-Set-and-Get.md:23
+#, fuzzy
 msgid ""
 "We can use any name for our key. If information has already been stored with t"
 "hat key, our new `set` will override it:"
 msgstr ""
+"Podemos utilizar cualquier nombre para nuestra clave. Si esta clave ya tiene "
+"datos almacenados, nuestro nuevo `set` tendrá primacía."
 
 #: 10.1-Set-and-Get.md:26
 #, no-wrap
@@ -8921,6 +8943,8 @@ msgid ""
 "set :intensity, 1000\n"
 "set :intensity, 3000"
 msgstr ""
+"set :intensity, 1000\n"
+"set :intensity, 3000"
 
 #: 10.1-Set-and-Get.md:31
 msgid ""
@@ -8931,7 +8955,7 @@ msgstr ""
 
 #: 10.1-Set-and-Get.md:35
 msgid "Get"
-msgstr ""
+msgstr "Get"
 
 #: 10.1-Set-and-Get.md:37
 msgid ""
@@ -8943,7 +8967,7 @@ msgstr ""
 #: 10.1-Set-and-Get.md:42
 #, no-wrap
 msgid "print get[:intensity] #=> prints 3000"
-msgstr ""
+msgstr "print get[:intensity] #=> imprime 3000"
 
 #: 10.1-Set-and-Get.md:46
 msgid ""
@@ -8967,7 +8991,6 @@ msgstr ""
 
 #: 10.1-Set-and-Get.md:58
 #, no-wrap
-#, fuzzy
 msgid ""
 "live_loop :setter do\n"
 "  set :foo, rrand(70, 130)\n"
@@ -8977,7 +9000,15 @@ msgid ""
 "  puts get[:foo]\n"
 "  sleep 0.5\n"
 "end"
-msgstr "Rango aleatorio (rrand)"
+msgstr ""
+"live_loop :setter do\n"
+"  set :foo, rrand(70, 130)\n"
+"  sleep 1\n"
+"end\n"
+"live_loop :getter do\n"
+"  puts get[:foo]\n"
+"  sleep 0.5\n"
+"end"
 
 #: 10.1-Set-and-Get.md:70
 msgid ""
@@ -9006,6 +9037,22 @@ msgid ""
 "{run: 0, time: 3.5}\n"
 " └─ 75.6048583984375"
 msgstr ""
+"{run: 0, time: 0.0}\n"
+" └─ 125.72265625\n"
+"{run: 0, time: 0.5}\n"
+" └─ 125.72265625\n"
+"{run: 0, time: 1.0}\n"
+" └─ 76.26220703125\n"
+"{run: 0, time: 1.5}\n"
+" └─ 76.26220703125\n"
+"{run: 0, time: 2.0}\n"
+" └─ 114.93408203125\n"
+"{run: 0, time: 2.5}\n"
+" └─ 114.93408203125\n"
+"{run: 0, time: 3.0}\n"
+" └─ 75.6048583984375\n"
+"{run: 0, time: 3.5}\n"
+" └─ 75.6048583984375"
 
 #: 10.1-Set-and-Get.md:100
 msgid ""
@@ -9092,11 +9139,11 @@ msgstr ""
 
 #: 10.2-Sync.md:1
 msgid "10.2 Sync"
-msgstr ""
+msgstr "10.2 Sincronización (Sync)"
 
 #: 10.2-Sync.md:3
 msgid "Sync"
-msgstr ""
+msgstr "Sincronización (Sync)"
 
 #: 10.2-Sync.md:5
 msgid ""
@@ -9122,7 +9169,6 @@ msgstr ""
 
 #: 10.2-Sync.md:20
 #, no-wrap
-#, fuzzy
 msgid ""
 "in_thread do\n"
 "  sync :foo\n"
@@ -9130,7 +9176,13 @@ msgid ""
 "end\n"
 "sleep 2\n"
 "set :foo, 1"
-msgstr "sample :ambi_lunar_land"
+msgstr ""
+"in_thread do\n"
+"  sync :foo\n"
+"  sample :ambi_lunar_land\n"
+"end\n"
+"sleep 2\n"
+"set :foo, 1"
 
 #: 10.2-Sync.md:31
 #, fuzzy

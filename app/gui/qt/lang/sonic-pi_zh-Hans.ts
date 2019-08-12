@@ -65,7 +65,7 @@
         <location filename="../mainwindow.cpp" line="1322"/>
         <source>Advanced audio settings for working with
 external PA systems when performing with Sonic Pi.</source>
-        <translation>高级音量设置用于使用Sonic Pi通过外部扩声系统进行表演时进行音频设置。</translation>
+        <translation>高级声音设置用于使用Sonic Pi通过外部扩声系统进行播放时。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1324"/>
@@ -90,7 +90,7 @@ can only handle mono.</source>
         <source>Toggle log auto scrolling.
 If enabled the log is scrolled to the bottom after every new message is displayed.</source>
         <translation>日志自动滚动开关。
-打开该选项，将允许在控制台中新的消息出现时自动滚动日志到底部，以使新的信息能够被现实。</translation>
+打开该选项，将允许在控制台中新的消息出现时自动滚动日志到底部，以使新的信息能够被显示。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1363"/>
@@ -888,7 +888,7 @@ to and from other programs or computers
     <message>
         <location filename="../mainwindow.cpp" line="1242"/>
         <source>List all connected MIDI Ports</source>
-        <translation>已连接的MIDI端口列表</translation>
+        <translation>列出所有已连接的MIDI端口</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1295"/>
@@ -1037,22 +1037,22 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="3315"/>
         <source>Disabling MIDI...</source>
-        <translation>禁用MIDI...</translation>
+        <translation>正在禁用MIDI...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="3325"/>
         <source>Opening OSC port for remote messages...</source>
-        <translation>开放OSC端口以进行远程通讯...</translation>
+        <translation>正在开放OSC端口以进行远程通讯...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="3334"/>
         <source>Stopping OSC server...</source>
-        <translation>关闭OSC服务器...</translation>
+        <translation>正在关闭OSC服务器...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="3346"/>
         <source>Resetting MIDI...</source>
-        <translation>重置MIDI...</translation>
+        <translation>正在重置MIDI...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="3351"/>

@@ -100,19 +100,19 @@ ne supportent que le mono.</translation>
         <source>Toggle synth argument checking functions.
 If disabled, certain synth opt values may
 create unexpectedly loud or uncomfortable sounds.</source>
-        <translation>Bascule des fonctions de vérification des arguments de synth. 
-Si désactivée, certaines valeurs des options de synth peuvent
-engendrer des sons forts ou inconfortables de manière imprévue.</translation>
+        <translation>Activation des arguments de vérification pour les synthétiseurs. 
+Si désactivée, certaines valeurs optionnelles des synthétiseurs peuvent
+engendrer des sons forts ou désagréables de manière imprévue.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2716"/>
         <source>Scope</source>
-        <translation>Cadre</translation>
+        <translation>Étendue</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1055"/>
         <source>The Sonic Pi Server could not be started!</source>
-        <translation>Le serveur Sonic Pi ne peut être démarré !</translation>
+        <translation>Le serveur Sonic Pi n&apos;a pas pu être démarré !</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="807"/>
@@ -127,17 +127,17 @@ engendrer des sons forts ou inconfortables de manière imprévue.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="1318"/>
         <source>Master Volume</source>
-        <translation>Volume Général</translation>
+        <translation>Volume général</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1319"/>
         <source>Use this slider to change the system volume.</source>
-        <translation>Utilisez cette glissière pour changer le volume système.</translation>
+        <translation>Utilisez ce potentiomètre pour modifier le volume système.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1321"/>
         <source>Audio Output</source>
-        <translation>Sortie Audio</translation>
+        <translation>Sortie audio</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1323"/>
@@ -152,17 +152,17 @@ engendrer des sons forts ou inconfortables de manière imprévue.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="1344"/>
         <source>Logging</source>
-        <translation>Trace</translation>
+        <translation>Journalisation</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1345"/>
         <source>Configure debug behaviour</source>
-        <translation>Configuration du comportement de débogage</translation>
+        <translation>Configuration du comportement de déboggage</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1347"/>
         <source>Synths and FX</source>
-        <translation>Synthétiseurs et Effets</translation>
+        <translation>Synthétiseurs et effets</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1348"/>
@@ -172,44 +172,43 @@ engendrer des sons forts ou inconfortables de manière imprévue.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="1350"/>
         <source>Log synths</source>
-        <translation>Trace les synthés</translation>
+        <translation>Trace des synthétiseurs</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1351"/>
         <source>Toggle log messages.
 If disabled, activity such as synth and sample
 triggering will not be printed to the log by default.</source>
-        <translation>Bascule des messages de trace.
-Si désactivée, l&apos;activité telle que le jeu des synthés et des échantillons 
-ne sera pas affichée dans la trace par défaut.</translation>
+        <translation>Active la journalisation.
+Si désactivé,  les synthétiseurs et samples activés
+ne seront pas, par défaut, inscrits dans le journal.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1353"/>
         <source>Clear log on run</source>
-        <translation>Efface la trace avant exécution</translation>
+        <translation>Réinitialise le journal avant exécution du code</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1354"/>
         <source>Toggle log clearing on run.
 If enabled, the log is cleared each
 time the run button is pressed.</source>
-        <translation>Bascule de l&apos;effacement de la trace avant exécution.
-Si activé, la trace est effacée à chaque appui 
-sur le bouton run.</translation>
+        <translation>Activation de l&apos;effacement du journal avant exécution.
+Si activé, le journal est effacé à chaque appui sur le bouton run.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1356"/>
         <source>Log cues</source>
-        <translation>Trace des cues</translation>
+        <translation>Journal des traces</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1357"/>
         <source>Enable or disable logging of cues.
 If disabled, cues will still trigger.
 However, they will not be visible in the logs.</source>
-        <translation>Bascule de la trace des cues.
-Si désactivée, les cues continueront à être émis.
-Toutefois, ils ne seront pas visibles dans la trace.</translation>
+        <translation>Activation du journal des traces.
+Si désactivée, les traces restent toujours émises.
+Elles ne seront toutefois pas visibles.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1360"/>
@@ -232,12 +231,12 @@ to be triggered.
 When disabled, Sonic Pi will complain
 when you attempt to use a synth or FX
 which isn&apos;t recognised.</source>
-        <translation>Lorsqu’activé, Sonic Pi permettra aux synthés et FX chargée via load_synthdefs pour être déclenché. Lorsque désactivé, Sonic Pi va se plaindre lorsque vous essayez d’utiliser un synthétiseur ou FX qui ne sont pas reconnu.</translation>
+        <translation>Lorsqu’activé, Sonic Pi permettra aux synthétiseurs et effets chargés via load_synthdefs d&apos;être joués. Lorsque désactivé, Sonic Pi émettra une alerte lorsque vous essayez d’utiliser un synthétiseur ou effet non reconnu.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1370"/>
         <source>Enforce timing guarantees</source>
-        <translation>Faire respecter les garanties de chronométrage</translation>
+        <translation>Faire respecter la justesse du minutage</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1371"/>
@@ -248,7 +247,7 @@ it is too late to do so
 When disabled, Sonic Pi will always
 attempt to trigger synths and FX
 even when a little late.</source>
-        <translation>Lorsqu’activé, Sonic Pi refusera déclencher des synthés et FX s’ils sont trop tard pour le faire, désactivé, Sonic Pi toujours tente de déclencher des synthés et FX même lorsqu’ils sont un peu tard.</translation>
+        <translation>Lorsqu’activé, Sonic Pi refusera déclencher des synthétiseurs et effets s’ils sont en retard par rapport à l&apos;horloge. Lorsque cette option est désactivée, Sonic Pi les déclenchera toujours même si ceux-ci sont en retard.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1388"/>
@@ -276,13 +275,13 @@ Cette vérification implique l&apos;envoi d&apos;informations anonymes sur votre
     <message>
         <location filename="../mainwindow.cpp" line="1401"/>
         <source>Check now</source>
-        <translation>Vérification sur le champ</translation>
+        <translation>Vérifier maintenant</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1402"/>
         <source>Force a check for updates now.
 This check involves sending anonymous information about your platform and version.</source>
-        <translation>Force une vérification des mises à jour.
+        <translation>Forcer la vérification d&apos;une mise à jour.
 Cette vérification implique l&apos;envoi d&apos;informations anonymes à propos de votre plateforme et de votre version.</translation>
     </message>
     <message>
@@ -303,7 +302,7 @@ Cette vérification implique l&apos;envoi d&apos;informations anonymes à propos
     <message>
         <location filename="../mainwindow.cpp" line="1428"/>
         <source>Show and Hide</source>
-        <translation>Montre et cache</translation>
+        <translation>Affichage</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1429"/>
@@ -313,12 +312,12 @@ Cette vérification implique l&apos;envoi d&apos;informations anonymes à propos
     <message>
         <location filename="../mainwindow.cpp" line="1430"/>
         <source>Look and Feel</source>
-        <translation>Regarde et ressent</translation>
+        <translation>Apparence</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1431"/>
         <source>Configure editor look and feel.</source>
-        <translation>Configuration du look and feel de l&apos;éditeur.</translation>
+        <translation>Configuration de l&apos;apparence de l&apos;éditeur.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1432"/>
@@ -425,7 +424,7 @@ Le thème sombre est parfait pour coder en boîte de nuit.</translation>
     <message>
         <location filename="../mainwindow.cpp" line="1532"/>
         <source>Toggle the visibility of the audio oscilloscopes.</source>
-        <translation>Changer la visibilité des oscilloscopes audio.</translation>
+        <translation>Afficher/cacher les oscilloscopes audio.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1533"/>
@@ -549,14 +548,14 @@ Lorsque la case est décochée, aucun message OSC ne sera reçu.</translation>
         <location filename="../mainwindow.cpp" line="3313"/>
         <location filename="../mainwindow.cpp" line="3344"/>
         <source>No connected input devices</source>
-        <translation>Pas de périphérique d&apos;entrée</translation>
+        <translation>Aucun périphérique d&apos;entrée connecté</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1293"/>
         <location filename="../mainwindow.cpp" line="3314"/>
         <location filename="../mainwindow.cpp" line="3345"/>
         <source>No connected output devices</source>
-        <translation>Pas de périphériques de sortie</translation>
+        <translation>Aucun périphérique de sortie connecté</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1294"/>
@@ -575,7 +574,7 @@ Sonic-Pi et reçoivent en tant que signaux
     <message>
         <location filename="../mainwindow.cpp" line="1440"/>
         <source>Show cue log</source>
-        <translation>Voir le journal de signaux</translation>
+        <translation>Afficher le journal de signaux</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1442"/>
@@ -1100,7 +1099,7 @@ Obtenez Sonic Pi %1</translation>
     <message>
         <location filename="../ruby_help.h" line="1251"/>
         <source>Synths</source>
-        <translation>synthétiseur</translation>
+        <translation>Synthétiseurs</translation>
     </message>
     <message>
         <location filename="../ruby_help.h" line="1298"/>

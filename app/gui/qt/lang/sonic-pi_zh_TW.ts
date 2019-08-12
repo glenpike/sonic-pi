@@ -6,12 +6,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="690"/>
         <source>Preferences</source>
-        <translation>偏好設置</translation>
+        <translation>偏好設定</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="705"/>
         <source>Log</source>
-        <translation>日志</translation>
+        <translation>日誌</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="387"/>
@@ -36,20 +36,20 @@ the same signal is sent to both speakers.
 Useful when working with external systems that
 can only handle mono.</source>
         <translation>切換單聲道模式。
-選中該選項時，左右聲道將混合爲單聲道信號，並同時發送到左右聲道輸出揚聲器。該選項對于外部音頻系統只能處理單聲道信號的情況非常有用。</translation>
+選中該選項時，左右聲道將混合爲單聲道信號，並同時發送到左右聲道輸出揚聲器。該選項對於只能處理單聲道信號的輸出對象裝置相當有用。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1345"/>
         <source>Configure debug behaviour</source>
-        <translation>配置調試模式</translation>
+        <translation>配置除錯模式</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1351"/>
         <source>Toggle log messages.
 If disabled, activity such as synth and sample
 triggering will not be printed to the log by default.</source>
-        <translation>切換日志消息記錄。
-取消該選項時，合成器和采樣事件觸發的信息默認將不在日志窗口中顯示。</translation>
+        <translation>切換日誌消息記錄。
+取消該選項時，合成器和取樣事件觸發的信息默認將不在日誌視窗中顯示。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1363"/>
@@ -59,15 +59,15 @@ triggering will not be printed to the log by default.</source>
     <message>
         <location filename="../mainwindow.cpp" line="1353"/>
         <source>Clear log on run</source>
-        <translation>重新運行時清空日志</translation>
+        <translation>重新執行時清空日誌</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1354"/>
         <source>Toggle log clearing on run.
 If enabled, the log is cleared each
 time the run button is pressed.</source>
-        <translation>切換運行時清空日志窗口。
-選中該選項時，每次運行按鈕被按下時，log日志窗口將自動清空所有消息。</translation>
+        <translation>切換執行時清空日誌窗口。
+選中該選項時，每次執行按鈕被按下時，log日誌窗口將自動清空所有訊息。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1438"/>
@@ -77,13 +77,13 @@ time the run button is pressed.</source>
     <message>
         <location filename="../mainwindow.cpp" line="1455"/>
         <source>Dark mode</source>
-        <translation>夜燈模式</translation>
+        <translation>暗色介面</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1841"/>
         <source>Running Code...</source>
         <oldsource>Running Code....</oldsource>
-        <translation>代碼運行中……</translation>
+        <translation>程式碼執行中……</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1908"/>
@@ -112,7 +112,7 @@ time the run button is pressed.</source>
     <message>
         <location filename="../mainwindow.cpp" line="618"/>
         <source>Buffer %1</source>
-        <translation>編輯器窗口 %1</translation>
+        <translation>編輯分頁 %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="455"/>
@@ -122,19 +122,19 @@ time the run button is pressed.</source>
     <message>
         <location filename="../mainwindow.cpp" line="942"/>
         <source>Indenting selection...</source>
-        <translation>縮進選中區域……</translation>
+        <translation>縮小選擇區域……</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="946"/>
         <source>Indenting line...</source>
-        <translation>縮進當前行……</translation>
+        <translation>縮小此行……</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1322"/>
         <source>Advanced audio settings for working with
 external PA systems when performing with Sonic Pi.</source>
         <oldsource>Advanced audio settings for working with external PA systems when performing with Sonic Pi.</oldsource>
-        <translation>高級音量設置用于使用Sonic Pi通過外部擴聲系統進行表演時進行音頻設置。</translation>
+        <translation>使用外部PA系統進行表演時進行高級音量設定。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1396"/>
@@ -160,7 +160,7 @@ external PA systems when performing with Sonic Pi.</source>
     <message>
         <location filename="../mainwindow.cpp" line="496"/>
         <source>Sonic Pi update info</source>
-        <translation>Sonic Pi更新信息</translation>
+        <translation>Sonic Pi更新資訊</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1364"/>
@@ -168,12 +168,12 @@ external PA systems when performing with Sonic Pi.</source>
 If disabled, certain synth opt values may
 create unexpectedly loud or uncomfortable sounds.</source>
         <translation>切換合成器參數檢查功能。
-取消該選項時，某些合成器在應用不合理的參數值時將可能産生不可預知的大信號或不舒服的聲音信號。</translation>
+取消該選項時，某些合成器在應用不合理的參數值時將可能產生不可預知的大信號或不舒服的聲音信號。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1344"/>
         <source>Logging</source>
-        <translation>日志選項</translation>
+        <translation>日誌</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2716"/>
@@ -183,22 +183,22 @@ create unexpectedly loud or uncomfortable sounds.</source>
     <message>
         <location filename="../mainwindow.cpp" line="975"/>
         <source>Toggle selection comment...</source>
-        <translation>注釋/取消注釋選中區域……</translation>
+        <translation>註解選擇區域……</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="979"/>
         <source>Toggle line comment...</source>
-        <translation>注釋/取消注釋當前行……</translation>
+        <translation>註解當前行……</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1055"/>
         <source>The Sonic Pi Server could not be started!</source>
-        <translation>Sonic Pi服務程序無法啓動！</translation>
+        <translation>Sonic Pi Server無法啓動！</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1323"/>
         <source>Invert stereo</source>
-        <translation>立體聲反轉</translation>
+        <translation>反轉立體聲</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1326"/>
@@ -218,7 +218,7 @@ create unexpectedly loud or uncomfortable sounds.</source>
     <message>
         <location filename="../mainwindow.cpp" line="1350"/>
         <source>Log synths</source>
-        <translation>記錄聲音合成</translation>
+        <translation>記錄合成</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1356"/>
@@ -230,20 +230,20 @@ create unexpectedly loud or uncomfortable sounds.</source>
         <source>Enable or disable logging of cues.
 If disabled, cues will still trigger.
 However, they will not be visible in the logs.</source>
-        <translation>是否允許在日志中記錄cue信息。
-取消該選項時，cue消息仍能夠被觸發。但cue消息將不在出現在日志中。</translation>
+        <translation>是否允許在日誌中記錄提示訊息。
+取消該選項時，提示訊息仍能夠被觸發，但將不在出現在日誌中。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1360"/>
         <source>Toggle log auto scrolling.
 If enabled the log is scrolled to the bottom after every new message is displayed.</source>
-        <translation>日志自動滾動開關。
-打開該選項，將允許在控制台中新的消息出現時自動滾動日志到底部，以使新的信息能夠被現實。</translation>
+        <translation>日誌自動捲動開關。
+打開該選項，控制台中新的消息出現時將自動捲動日誌到底部。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1367"/>
         <source>Enable external synths and FX</source>
-        <translation>允許使用外部合成器和效果器</translation>
+        <translation>允許外部合成器和效果器</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1368"/>
@@ -254,8 +254,8 @@ to be triggered.
 When disabled, Sonic Pi will complain
 when you attempt to use a synth or FX
 which isn&apos;t recognised.</source>
-        <translation>選中該選項時，Sonic Pi將允許合成器和效果器通過load_synthdefs模塊來加載並被觸發。
-取消該選項時，Sonic Pi將在嘗試加載未被識別的合成器或效果器時發出警告。</translation>
+        <translation>選中該選項時，Sonic Pi將允許合成器和效果器通過load_synthdefs模組載入並觸發。
+取消該選項時，Sonic Pi將在嘗試載入未被識別的合成器或效果器時發出警告。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1370"/>
@@ -272,7 +272,7 @@ When disabled, Sonic Pi will always
 attempt to trigger synths and FX
 even when a little late.</source>
         <translation>選中該選項時，如果延遲超出範圍，Sonic Pi將拒絕觸發合成器和效果器；
-取消該選項時，即使又一定延遲，Sonic Pi也將嘗試觸發合成器和效果器。</translation>
+取消該選項時，即使發生延遲，Sonic Pi也將嘗試觸發合成器和效果器。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1388"/>
@@ -284,7 +284,7 @@ even when a little late.</source>
         <source>Toggle automatic update checking.
 This check involves sending anonymous information about your platform and version.</source>
         <translation>切換自動更新檢查。
-該選項將向開發者匿名發送當前用戶操作系統類型和Sonic Pi版本信息。</translation>
+該選項將向開發者匿名發送當前用戶操作系統類型和Sonic Pi版本訊息。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1401"/>
@@ -296,22 +296,22 @@ This check involves sending anonymous information about your platform and versio
         <source>Force a check for updates now.
 This check involves sending anonymous information about your platform and version.</source>
         <translation>強制立即檢查更新。
-該選項將匿名向開發者發送當前用戶操作系統類型和Sonic Pi版本信息。</translation>
+該選項將匿名向開發者發送當前用戶操作系統類型和Sonic Pi版本訊息。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1403"/>
         <source>Get update</source>
-        <translation>獲取更新</translation>
+        <translation>取得更新</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1404"/>
         <source>Visit http://sonic-pi.net to download new version</source>
-        <translation>訪問http://sonic-pi.net下載新版本</translation>
+        <translation>瀏覽http://sonic-pi.net下載新版本</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1409"/>
         <source>Update Info</source>
-        <translation>更新信息</translation>
+        <translation>更新訊息</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1428"/>
@@ -321,7 +321,7 @@ This check involves sending anonymous information about your platform and versio
     <message>
         <location filename="../mainwindow.cpp" line="1429"/>
         <source>Configure editor display options.</source>
-        <translation>配置編輯器顯示選項。</translation>
+        <translation>設定編輯器顯示選項。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1430"/>
@@ -331,7 +331,7 @@ This check involves sending anonymous information about your platform and versio
     <message>
         <location filename="../mainwindow.cpp" line="1431"/>
         <source>Configure editor look and feel.</source>
-        <translation>設置代碼編輯器外觀。</translation>
+        <translation>設定程式碼編輯器外觀。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1432"/>
@@ -341,7 +341,7 @@ This check involves sending anonymous information about your platform and versio
     <message>
         <location filename="../mainwindow.cpp" line="1433"/>
         <source>Configure automation features.</source>
-        <translation>設置自動化選項。</translation>
+        <translation>設定自動化選項。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="510"/>
@@ -351,50 +351,50 @@ This check involves sending anonymous information about your platform and versio
     <message>
         <location filename="../mainwindow.cpp" line="1192"/>
         <source>Networked OSC</source>
-        <translation type="unfinished"></translation>
+        <translation>網路OSC</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1193"/>
         <source>Sonic Pi can send and receive Open Sound Control messages
 to and from other programs or computers
  via the currently connected network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonic Pi 可以透過當下連接的網路向其他程式或電腦發送/接收 Open Sound Control 訊息。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1238"/>
         <source>MIDI Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI設定</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1241"/>
         <source>MIDI Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI連接埠</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1242"/>
         <source>List all connected MIDI Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>已連接的MIDI連接埠列表</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1295"/>
         <source>MIDI output devices receive MIDI messages directly from
 Sonic Pi which can be sent via the midi_* fns</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI輸出裝置可以直接從Sonic Pi接收以midi_* 函式形式發送的MIDI訊號</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1435"/>
         <source>Automatically align code on Run</source>
-        <translation>運行時自動對齊代碼</translation>
+        <translation>執行時自動對齊程式碼</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1439"/>
         <source>Show log</source>
-        <translation>顯示日志</translation>
+        <translation>顯示日誌</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1441"/>
         <source>Toggle visibility of the log.</source>
-        <translation>切換是否顯示日志。</translation>
+        <translation>切換是否顯示日誌。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1445"/>
@@ -405,7 +405,8 @@ Sonic Pi which can be sent via the midi_* fns</source>
         <location filename="../mainwindow.cpp" line="1447"/>
         <source>Toggle Pro Icons - switch between the default
  and a more minimalistic icon set.</source>
-        <translation type="unfinished"></translation>
+        <translation>切換專業圖示 - 在預設圖示和
+簡約版圖示之間切換。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1448"/>
@@ -415,22 +416,22 @@ Sonic Pi which can be sent via the midi_* fns</source>
     <message>
         <location filename="../mainwindow.cpp" line="1450"/>
         <source>Show tabs</source>
-        <translation>顯示編輯器窗口選擇欄</translation>
+        <translation>顯示分頁</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1452"/>
         <source>Toggle visibility of the buffer selection tabs.</source>
-        <translation>切換是否顯示編輯器窗口Buffer選擇標簽。</translation>
+        <translation>切換是否顯示編輯器窗口Buffer選擇分頁。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1453"/>
         <source>Full screen</source>
-        <translation>全屏模式</translation>
+        <translation>全螢幕模式</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1454"/>
         <source>Toggle full screen mode.</source>
-        <translation>打開/關閉全屏模式。</translation>
+        <translation>打開/關閉全螢幕模式。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1456"/>
@@ -442,7 +443,7 @@ Sonic Pi which can be sent via the midi_* fns</source>
         <source>
 Dark mode is perfect for live coding in night clubs.</source>
         <translation>
-深色模式適用于在燈光較暗的場所進行Sonic Pi編程。</translation>
+深色模式適合在燈光較暗的場所進行 live coding。</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1502"/>
@@ -469,7 +470,7 @@ Apologies, a critical error occurred during startup</source>
     <message>
         <location filename="../mainwindow.cpp" line="1771"/>
         <source>Load Sonic Pi Buffer</source>
-        <translation>打開Sonic Pi Buffer文件</translation>
+        <translation>開啟Sonic Pi Buffer文件</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1771"/>
@@ -492,17 +493,17 @@ Apologies, a critical error occurred during startup</source>
     <message>
         <location filename="../mainwindow.cpp" line="2227"/>
         <source>Log Auto Scroll on...</source>
-        <translation>日志窗口自動滾動開啓...</translation>
+        <translation>日誌窗口自動滾動開啓...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2229"/>
         <source>Log Auto Scroll off...</source>
-        <translation>日志窗口自動滾動關閉...</translation>
+        <translation>日誌窗口自動滾動關閉...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2672"/>
         <source>Run the code in the current buffer</source>
-        <translation>運行當前編輯器窗口內的代碼</translation>
+        <translation>執行當前編輯器窗口內的程式碼</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2687"/>
@@ -522,7 +523,7 @@ Apologies, a critical error occurred during startup</source>
     <message>
         <location filename="../mainwindow.cpp" line="3174"/>
         <source>help visibility changed...</source>
-        <translation type="unfinished"></translation>
+        <translation>幫助是否可見已修改...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="3307"/>
@@ -557,12 +558,12 @@ Apologies, a critical error occurred during startup</source>
     <message>
         <location filename="../mainwindow.cpp" line="3359"/>
         <source>Welcome back. Now get your live code on...</source>
-        <translation>歡迎回來。現在加載你的代碼...</translation>
+        <translation>歡迎回來。現在加載你的程式碼...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1788"/>
         <source>Save Current Buffer</source>
-        <translation>保存當前編輯器窗口代碼</translation>
+        <translation>保存當前編輯器窗口程式碼</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="711"/>
@@ -587,7 +588,7 @@ Apologies, a critical error occurred during startup</source>
     <message>
         <location filename="../mainwindow.cpp" line="1197"/>
         <source>Listening for OSC messages on port</source>
-        <translation>正在監聽 OSC 訊息在埠</translation>
+        <translation>正在監聽連接埠上的 OSC 訊息</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1218"/>
@@ -722,17 +723,17 @@ Sonic Pi 並接收為標記活動
     <message>
         <location filename="../mainwindow.cpp" line="1515"/>
         <source>Show and Hide Scope</source>
-        <translation>顯示與隱藏範圍</translation>
+        <translation>顯示與隱藏波形</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1516"/>
         <source>Scope Kinds</source>
-        <translation>範圍種類</translation>
+        <translation>波形種類</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1531"/>
         <source>Show Scopes</source>
-        <translation>顯示範圍</translation>
+        <translation>顯示波形</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1532"/>
@@ -742,7 +743,7 @@ Sonic Pi 並接收為標記活動
     <message>
         <location filename="../mainwindow.cpp" line="1533"/>
         <source>Show Axes</source>
-        <translation>顯示軸</translation>
+        <translation>顯示波形軸</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1534"/>
@@ -804,7 +805,7 @@ Lissjous - 顯示左右聲道間的相位關係
         <location filename="../mainwindow.cpp" line="1992"/>
         <source>Disabling Mixer LPF...</source>
         <oldsource>Disabling Mixer LPF....</oldsource>
-        <translation>禁用低通濾波器...</translation>
+        <translation>停用低通濾波器...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2000"/>
@@ -843,7 +844,7 @@ Lissjous - 顯示左右聲道間的相位關係
     <message>
         <location filename="../mainwindow.cpp" line="2682"/>
         <source>Save current buffer as an external file</source>
-        <translation>保存當前編輯器窗口爲外部文件</translation>
+        <translation>儲存當前編輯器窗口至外部文件</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2694"/>
@@ -853,7 +854,7 @@ Lissjous - 顯示左右聲道間的相位關係
     <message>
         <location filename="../mainwindow.cpp" line="2699"/>
         <source>Improve readability of code</source>
-        <translation>提高代碼可讀性</translation>
+        <translation>提高程式碼可讀性</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2704"/>
@@ -936,7 +937,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="2671"/>
         <source>Run</source>
-        <translation>運行</translation>
+        <translation>執行</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2677"/>
@@ -946,7 +947,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="2678"/>
         <source>Stop all running code</source>
-        <translation>停止所有代碼運行</translation>
+        <translation>停止所有程式碼執行</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2681"/>
@@ -1005,12 +1006,12 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="2702"/>
         <source>Increase Text Size</source>
-        <translation>增大字體</translation>
+        <translation>放大字體</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2709"/>
         <source>Decrease Text Size</source>
-        <translation>減小字體</translation>
+        <translation>縮小字體</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2743"/>
@@ -1020,7 +1021,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="2793"/>
         <source>About</source>
-        <translation>關于</translation>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2794"/>
@@ -1035,7 +1036,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="2796"/>
         <source>Community</source>
-        <translation>社區</translation>
+        <translation>社群</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2797"/>
@@ -1045,7 +1046,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="2798"/>
         <source>History</source>
-        <translation>曆史</translation>
+        <translation>歷史</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2819"/>
@@ -1091,7 +1092,7 @@ Get Sonic Pi %1</source>
         <location filename="../ruby_help.h" line="1071"/>
         <location filename="../ruby_help.h" line="1167"/>
         <source>Tutorial</source>
-        <translation>教程</translation>
+        <translation>教學</translation>
     </message>
     <message>
         <location filename="../ruby_help.h" line="1202"/>
@@ -1111,7 +1112,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../ruby_help.h" line="1317"/>
         <source>Samples</source>
-        <translation>采樣器</translation>
+        <translation>取樣器</translation>
     </message>
     <message>
         <location filename="../ruby_help.h" line="1564"/>
@@ -1132,7 +1133,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../sonic_pi_udp_osc_server.cpp" line="38"/>
         <source>Is Sonic Pi already running?  Can&apos;t open UDP port.</source>
-        <translation>Sonic Pi 正在執行？無法開啟 UDP 埠。</translation>
+        <translation>Sonic Pi正在執行？無法開啟UDP埠。</translation>
     </message>
 </context>
 </TS>

@@ -199,22 +199,14 @@ module SonicPi
     end
 
     module TLMixin
-      # def next(*args)
-      #   tick(self.object_id.to_s.to_sym, *args)
-      # end
-
-      # def curr(*args)
-      #   look(self.object_id.to_s.to_sym, *args)
-      # end
-
       def tick(*args)
         idx = SonicPi::Core::ThreadLocalCounter.tick(*args)
-        self[idx]
+        self.ring[idx]
       end
 
       def look(*args)
         idx = SonicPi::Core::ThreadLocalCounter.look(*args)
-        self[idx]
+        self.ring[idx]
       end
     end
 
@@ -427,12 +419,12 @@ module SonicPi
         return nil if self.empty?
         if idx.is_a?(Numeric) && missing_length
           idx = map_index(idx)
-          super idx
+          super idx.round
         else
           if missing_length
             super(idx)
           else
-            super(idx, len)
+            super(idx.round, len)
           end
         end
       end
@@ -496,6 +488,7 @@ module SonicPi
       def take(n)
         return [].ring if n == 0
         return self.reverse.take(-n) if n < 0
+        return [].ring if @size < 1
         return super if n <= @size
         self + take(n - @size)
       end
@@ -610,6 +603,13 @@ module SonicPi
       end
     end
 
+  end
+end
+
+class Time
+  def __sp_make_thread_safe
+    return self if frozen?
+    self.clone.freeze
   end
 end
 
@@ -842,10 +842,6 @@ class Hash
   end
 end
 
-
-
-# Meta-glasses from our hero Why to help us
-# see more clearly..
 class Object
 
   def sp_log_inspect
@@ -872,21 +868,16 @@ class Object
     self.to_a.ring
   end
 
-  def next(*args)
-    self.to_a.next(*args)
-  end
-
-  def curr(*args)
-    self.to_a.curr(*args)
-  end
-
   def tick(*args)
-    self.to_a.tick(*args)
+    self.ring.tick(*args)
   end
 
   def look(*args)
-    self.to_a.look(*args)
+    self.ring.look(*args)
   end
+
+  # Meta-glasses from our hero Why to help us
+  # see more clearly..
 
   # The hidden singleton lurks behind everyone
   def metaclass; class << self; self; end; end

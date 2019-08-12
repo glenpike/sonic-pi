@@ -32,8 +32,6 @@ module SonicPi
       @server_version = Version.new(1, 0, 0, "final")
       @life_hooks = LifeCycleHooks.new
       @msg_queue = Queue.new
-      @event_queue = SizedQueue.new(20)
-      @keypress_handlers = {}
       @cue_events = IncomingEvents.new
       @sync_counter = Counter.new
       @job_counter = Counter.new(-1) # Start counting jobs from 0
@@ -42,7 +40,6 @@ module SonicPi
       @named_subthreads = {}
       @job_subthread_mutex = Mutex.new
       @user_jobs = Jobs.new
-      @sync_real_sleep_time = 0.05
       @user_methods = []
       @global_start_time = Time.now
       @session_id = SecureRandom.uuid
@@ -79,6 +76,10 @@ module SonicPi
 
       end
 
+    end
+
+    def __error(e, m=nil)
+      raise e
     end
 
     def run(&blk)

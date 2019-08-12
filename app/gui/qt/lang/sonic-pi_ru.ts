@@ -56,8 +56,8 @@
         <source>Advanced audio settings for working with
 external PA systems when performing with Sonic Pi.</source>
         <translatorcomment>Из-за отсутствия контекста непонятно, что такое PA systems</translatorcomment>
-        <translation>Расширенные аудио настройки для работы
-с внешними ПА системами.</translation>
+        <translation>Расширенные аудионастройки для работы
+с внешними системами звукового оповещения.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1324"/>
@@ -402,7 +402,7 @@ Dark mode is perfect for live coding in night clubs.</source>
         <source>When checked, Sonic Pi will listen for OSC messages from remote machines.
  When unchecked, only messages from the local machine will be received.</source>
         <translation>Когда включено, Sonic Pi будет принимать сообщения OSC с удалённых компьютеров.
- Когда выключено, будут приниматься только сообщения с локального компьютера.</translation>
+Когда выключено, будут приниматься только сообщения с локального компьютера.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1227"/>
@@ -474,7 +474,7 @@ Dark mode is perfect for live coding in night clubs.</source>
 Sonic Pi and are received as cue events
 (similar to incoming OSC messages and internal cues)</source>
         <translation>Входные устройства передачи MIDI-Сообщений MIDI непосредственно
- Sonic Pi и принимаются как события метки
+Sonic Pi и принимаются как события метки
 (аналогично входящим сообщениям OSC и внутренним сигналам)</translation>
     </message>
     <message>
@@ -559,9 +559,9 @@ even when a little late.</source>
 использовать синтезаторы и FX, если
 уже слишком поздно.
 
-Когда выключено, Sonic Pi будет пытаться
-использовать синтезаторы и FX всегда,
-даже если уже немного поздно.</translation>
+Когда выключено, Sonic Pi будет всегда пытаться
+использовать синтезаторы и FX,
+даже если уже поздно их использовать.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1440"/>
@@ -582,13 +582,13 @@ even when a little late.</source>
         <location filename="../mainwindow.cpp" line="1447"/>
         <source>Toggle Pro Icons - switch between the default
  and a more minimalistic icon set.</source>
-        <translation>Переключение Pro иконки - переключение между параметрами по умолчанию
- и более минималистичный набор иконок.</translation>
+        <translation>Переключение Pro иконок - между параметрами по умолчанию
+ и более минималистичным набором иконок.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1505"/>
         <source>IO</source>
-        <translation type="unfinished"></translation>
+        <translation>IO</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1515"/>

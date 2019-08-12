@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="el">
 <context>
@@ -261,7 +262,7 @@ to be triggered.
 
 When disabled, Sonic Pi will complain
 when you attempt to use a synth or FX
-which isn't recognised.</source>
+which isn&apos;t recognised.</source>
         <translation>Όταν ενεργοποιηθεί, το Sonic Pi θα επιτρέπει
 τις συνθέσεις και τα ηχητικά εφέ που φορτώθηκαν μέσω του load_syhthdefs
 να ενεργοποιηθούν.
@@ -289,7 +290,7 @@ even when a little late.</source>
 
 Όταν απενεργοποιηθεί, το Sonic Pi θα προσπαθήσει
 να ενεργοποιήσει πάντα τις συνθέσεις και τα ηχητικά εφέ
-ακόμη κι' αν είναι λίγο αργά.</translation>
+ακόμη κι&apos; αν είναι λίγο αργά.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1388"/>
@@ -323,7 +324,7 @@ This check involves sending anonymous information about your platform and versio
     <message>
         <location filename="../mainwindow.cpp" line="1404"/>
         <source>Visit http://sonic-pi.net to download new version</source>
-        <translation>Επισκεφθείτε το http://sonic-pi.net για να λάβετε την νέα έκδοση</translation>
+        <translation>Επισκεφθείτε τη διεύθυνση http://sonic-pi.net για να κατεβάσετε τη νέα έκδοση</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1409"/>
@@ -456,7 +457,7 @@ Sonic Pi which can be sent via the midi_* fns</source>
     <message>
         <location filename="../mainwindow.cpp" line="1456"/>
         <source>Toggle dark mode.</source>
-        <translation>Εναλλαγή στην σκοτεινή λειτουργία</translation>
+        <translation>Εναλλαγή στην σκοτεινή λειτουργία.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1456"/>
@@ -593,12 +594,12 @@ Apologies, a critical error occurred during startup</source>
     <message>
         <location filename="../mainwindow.cpp" line="807"/>
         <source>Full screen mode on.</source>
-        <translation>Λειτουργία πλήρους οθόνης ενεργοποιημένη</translation>
+        <translation>Λειτουργία πλήρους οθόνης ενεργοποιημένη.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="828"/>
         <source>Full screen mode off.</source>
-        <translation>Λειτουργία πλήρους οθόνης απενεργοποιημένη</translation>
+        <translation>Λειτουργία πλήρους οθόνης απενεργοποιημένη.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1196"/>
@@ -758,7 +759,7 @@ Sonic Pi και λαμβάνονται ως συμβάντα νύξης
     <message>
         <location filename="../mainwindow.cpp" line="1532"/>
         <source>Toggle the visibility of the audio oscilloscopes.</source>
-        <translation>Εναλλαγή της ορατότητας των παλμοσκoπίων ήχου</translation>
+        <translation>Εναλλαγή της ορατότητας των παλμοσκοπίων ήχου.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1533"/>
@@ -831,13 +832,13 @@ Stereo - εμφανίζει δύο ανεξάρτητες προβολές γι�
         <location filename="../mainwindow.cpp" line="2000"/>
         <source>Enabling Inverted Stereo...</source>
         <oldsource>Enabling Inverted Stereo....</oldsource>
-        <translation>Ενεργοποίηση Αντίστροφης Στερεοφωνίας</translation>
+        <translation>Ενεργοποίηση Αντίστροφης Στερεοφωνίας...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2008"/>
         <source>Enabling Standard Stereo...</source>
         <oldsource>Enabling Standard Stereo....</oldsource>
-        <translation>Ενεργοποίηση Αντίστροφης Μονοφωνίας</translation>
+        <translation>Ενεργοποίηση Κανονικής Στερεοφωνίας...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="2016"/>
@@ -999,7 +1000,7 @@ Get Sonic Pi %1</source>
     <message>
         <location filename="../mainwindow.cpp" line="1670"/>
         <source>Server boot error...</source>
-        <translation>Σφάλμα εκκίνησης του διακομιστή</translation>
+        <translation>Σφάλμα εκκίνησης του διακομιστή...</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1670"/>
@@ -1153,7 +1154,7 @@ Get Sonic Pi %1</source>
     <name>SonicPiUDPOSCServer</name>
     <message>
         <location filename="../sonic_pi_udp_osc_server.cpp" line="38"/>
-        <source>Is Sonic Pi already running?  Can't open UDP port.</source>
+        <source>Is Sonic Pi already running?  Can&apos;t open UDP port.</source>
         <translation>Μήπως το Sonic Pi εκτελείται ήδη; Δεν μπορώ να ανοίξω την θύρα UDP.</translation>
     </message>
 </context>

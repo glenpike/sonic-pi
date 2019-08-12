@@ -101,9 +101,9 @@ module SonicPi
       @osc_cue_server_mutex.synchronize do
         @osc_server.stop if @osc_server
         __info "Restarting OSC server...." unless silent
-        @osc_server = SonicPi::OSC::UDPServer.new(@osc_cues_port, open: open,) do |address, args|
+        @osc_server = SonicPi::OSC::UDPServer.new(@osc_cues_port, open: open,) do |address, args, info|
           address = "/#{address}" unless address.start_with?("/")
-          address = "/osc#{address}"
+          address = "/osc:#{info[2]}:#{info[1]}#{address}"
           p = 0
           d = 0
           b = 0
@@ -268,8 +268,8 @@ module SonicPi
     end
 
     def __schedule_delayed_blocks_and_messages!
-      delayed_messages = __system_thread_locals.get :sonic_pi_local_spider_delayed_messages
-      delayed_blocks = __system_thread_locals.get(:sonic_pi_local_spider_delayed_blocks) || []
+      delayed_messages = __system_thread_locals.get(:sonic_pi_local_spider_delayed_messages, [])
+      delayed_blocks = __system_thread_locals.get(:sonic_pi_local_spider_delayed_blocks, [])
       if delayed_messages
         unless(delayed_messages.empty?)
           thread_name = __current_thread_name
@@ -290,6 +290,7 @@ module SonicPi
             __multi_message(delayed_messages, thread_name)
           end
           __system_thread_locals.set_local :sonic_pi_local_spider_delayed_messages, []
+          __system_thread_locals.set_local :sonic_pi_local_spider_delayed_blocks, []
         end
       end
     end
@@ -361,15 +362,6 @@ module SonicPi
       __system_thread_locals.get(:sonic_pi_spider_job_info) || {}
     end
 
-    def __handle_event(e)
-      case e[:type]
-      when :keypress
-        @keypress_handlers.values.each{|h| h.call(e[:val])}
-      else
-        puts "Unknown event: #{e}"
-      end
-    end
-
     def __sync(id, res)
       @cue_events.event("/sync", {:id => id, :result => res})
     end
@@ -428,7 +420,7 @@ module SonicPi
       id = id.to_s
       raise "Aborting load: file name is blank" if  id.empty?
       path = project_path + id + '.spi'
-      s = "# Welcome to Sonic Pi #{@version.to_s}\n\n"
+      s = "# Welcome to Sonic Pi\n\n"
       if File.exist? path
         s = IO.read(path)
       end
@@ -1252,7 +1244,6 @@ module SonicPi
 
   class Runtime
 
-    attr_reader :event_queue
     include Util
     include ActiveSupport
     include RuntimeMethods
@@ -1262,13 +1253,10 @@ module SonicPi
       @git_hash = __extract_git_hash
       gh_short = @git_hash ? "-#{@git_hash[0, 5]}" : ""
       @settings = Config::Settings.new(user_settings_path)
-
-      @version = Version.new(3, 1, 0)
+      @version = Version.new(3, 2, 0, "dev#{gh_short}")
       @server_version = __server_version
       @life_hooks = LifeCycleHooks.new
       @msg_queue = msg_queue
-      @event_queue = SizedQueue.new(20)
-      @keypress_handlers = {}
       @cue_events = IncomingEvents.new
       @job_counter = Counter.new(-1) # Start counting jobs from 0
       @job_subthreads = {}
@@ -1276,16 +1264,13 @@ module SonicPi
       @named_subthreads = {}
       @job_subthread_mutex = Mutex.new
       @user_jobs = Jobs.new
-      @sync_real_sleep_time = 0.05
       @user_methods = user_methods
       @global_start_time = Time.now
       @session_id = SecureRandom.uuid
       @snippets = {}
       @osc_cues_port = ports[:osc_cues_port]
-      # TODO remove hardcoded port number
       @osc_router_port = ports[:erlang_port]
-      @log_cues = false
-      @log_cues_file = File.open(osc_cues_log_path, 'a')
+      @osc_server = SonicPi::OSC::UDPServer.new(@osc_cues_port, open: false)
       @system_state = EventHistory.new(@job_subthreads, @job_subthread_mutex)
       @user_state = EventHistory.new(@job_subthreads, @job_subthread_mutex)
       @event_history = EventHistory.new(@job_subthreads, @job_subthread_mutex)
@@ -1312,7 +1297,7 @@ module SonicPi
         sleep_time = sched_ahead_sync_t - Time.now
         if sleep_time > 0
           Thread.new do
-            Kernel.sleep(sleep_time) if sleep_time > 0
+            Kernel.sleep(sleep_time)
             __msg_queue.push({:type => :incoming, :time => t.to_s, :id => gui_log_id, :address => address, :args => args.inspect})
             __msg_queue.push({:type => :incoming, :time => t.to_s, :id => gui_log_id, :address => sym, :args => args.inspect}) if sym
           end
@@ -1320,11 +1305,6 @@ module SonicPi
           __msg_queue.push({:type => :incoming, :time => t.to_s, :id => gui_log_id, :address => address, :args => args.inspect})
           __msg_queue.push({:type => :incoming, :time => t.to_s, :id => gui_log_id, :address => sym, :args => args.inspect}) if sym
         end
-
-        #   @log_cues_file.write("[#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}] #{address}, #{args.inspect}\n")
-        #   @log_cues_file.flush
-        # end
-
       end
 
       # TODO Add support for TCP
@@ -1337,14 +1317,6 @@ module SonicPi
         @gitsave = nil
       end
       @save_queue = SizedQueue.new(20)
-
-      @event_t = Thread.new do
-        __system_thread_locals.set_local(:sonic_pi_local_thread_group, :event_loop)
-        Kernel.loop do
-          event = @event_queue.pop
-          __handle_event event
-        end
-      end
 
       @save_t = Thread.new do
         __system_thread_locals.set_local(:sonic_pi_local_thread_group, :save_loop)

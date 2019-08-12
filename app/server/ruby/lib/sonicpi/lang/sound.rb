@@ -31,6 +31,39 @@ require_relative "../tuning"
 require_relative "../sample_loader"
 require_relative "support/docsystem"
 
+class SonicPi::Core::SPVector
+  def notes(*args)
+
+    note = lambda do |n, args|
+      # code copied from the notes fn in this namespace
+      case n
+      when Numeric
+        return n
+      when Symbol
+        return nil if(n == :r || n == :rest)
+      when NilClass
+        return nil
+      when Proc
+        return note(n.call, *args)
+      when Hash
+        raise "Unable to create a note from the Map: #{n.inspect}"
+      end
+
+      return SonicPi::Note.resolve_midi_note_without_octave(n) if args.empty?
+
+      args_h = resolve_synth_opts_hash_or_array(args)
+      octave = args_h[:octave]
+      if octave
+        SonicPi::Note.resolve_midi_note(n, octave)
+      else
+        SonicPi::Note.resolve_midi_note_without_octave(n)
+      end
+    end
+
+    self.map {|n| note.call(n, args) }
+  end
+end
+
 class Symbol
   def -(other)
     return self if (self == :r) || (self == :rest)
@@ -218,8 +251,10 @@ module SonicPi
       doc name:           :live_audio,
           introduced:     Version.new(3,0,0),
           summary:        "A named audio stream live from your soundcard",
-          args:           [[]],
+          args:           [[:name, :symbol]],
           returns:        :SynthNode,
+          opts:           {:input  => "The audio card input to read audio from.",
+                           :stereo => "If set to truthy value (true, 1) will read from two consecutive audio card inputs."},
           #   opts:           {sound_in_stereo: {doc: "",
           #   default: true
           # }},
@@ -457,8 +492,9 @@ sample_free dir, /[Bb]ar/ # frees sample which matches regex /[Bb]ar/ in \"/path
       doc name:           :buffer,
           introduced:     Version.new(3,0,0),
           summary:        "Intialise or return named buffer",
-          args:           [[]],
-          returns:        nil,
+          args:           [[:symbol, :name], [:number, :duration]],
+          alt_args:       [[:symbol, :name]],
+          returns:        :buffer,
           opts:           nil,
           accepts_block:  false,
           doc:            "Initialise or return a named buffer with a specific duration (defaults to 8 beats). Useful for working with the `:record` FX. If the buffer is requested with a different duration, then a new buffer will be initialised and the old one recycled.",
@@ -650,7 +686,10 @@ end"]
 
         # Don't use sample_duration as that is stretched to the current
         # bpm!
-        sd = sample_buffer(sample_name).duration
+        scaling = __thread_locals.get(:sonic_pi_spider_arg_bpm_scaling)
+        __thread_locals.set(:sonic_pi_spider_arg_bpm_scaling, false)
+        sd = sample_duration(sample_name, *args)
+        __thread_locals.set(:sonic_pi_spider_arg_bpm_scaling, scaling)
         use_bpm(num_beats * (60.0 / sd))
       end
       doc name:           :use_sample_bpm,
@@ -3027,6 +3066,7 @@ By combining commands which add to the candidates and then filtering those candi
                           :amp           => "Amplitude of playback.",
                           :pre_amp           => "Amplitude multiplier which takes place immediately before any internal FX such as the low pass filter, compressor or pitch modification. Use this opt if you want to overload the compressor.",
                           :onset         => "Analyse the sample with an onset detection algorithm and set the `start:` and `finish:` opts to play the nth onset only. Allows you to treat a rhythm sample as a palette of individual drum/synth hits. Floats are rounded to the nearest whole number.",
+                          :on            => "If specified and false/nil/0 will stop the sample from being played. Ensures all opts are evaluated.",
                           :slice         => "Divides the sample duration evenly into `num_slices` sections (defaults to 16) and set the `start:` and `finish:` opts to play the nth slice only. Use the envelope opts to remove any clicks introduced if the slice boundary is in the middle of a sound. Also consider `onset:`. Floats are rounded to the nearest whole number.",
                           :num_slices         => "Number of slices to divide the sample into when using the `slice:` opt. Defaults to 16. Floats are rounded to the nearest whole number.",
                           :norm              => "Normalise the audio (make quieter parts of the sample louder and louder parts quieter) - this is similar to the normaliser FX. This may emphasise any clicks caused by clipping.",
@@ -3208,7 +3248,7 @@ live_loop :garzul do
 end",
         "
 # External samples
-sample \"/path/to/sample.wav\"                          # Play any Wav, Aif or FLAC sample on your computer
+sample \"/path/to/sample.wav\"                          # Play any Wav, Aif, Ogg, Oga, or FLAC sample on your computer
                                                         # by simply passing a string representing the full
                                                         # path",
         "
@@ -3536,12 +3576,27 @@ puts note_info(:C, octave: 2)
       doc name:           :degree,
           introduced:         Version.new(2,1,0),
           summary:            "Convert a degree into a note",
-          doc:                "For a given scale and tonic it takes a symbol `:i`, `:ii`, `:iii`, `:iv`,`:v`, `:vi`, `:vii` or a number `1`-`7` and resolves it to a midi note.",
+          doc:                "For a given scale and tonic it takes a symbol/string/number and resolves it to a midi note. The degree can be either a decimal number or a roman numeral (if it's a string or symbol), and may optionally be prefixed an augmentation (`a`/`d` for an augmented/diminished interval, `aa`/`dd` for double augmented/diminished or `p` for a perfect (unchanged) interval).",
           args:               [[:degree, :symbol_or_number], [:tonic, :symbol], [:scale, :symbol]],
           accepts_block:      false,
           examples:           [%Q{
-play degree(:ii, :D3, :major)
-play degree(2, :C3, :minor)
+play degree(:iii, :D3, :major) # major third up from :D3
+play degree(3, :C3, :minor) # minor third up from :C3
+play degree('d5', :B3, :major) # diminished fifth up from :B3
+},
+                               %q{
+chrd = []
+[:i, :iii, :v, :dvii, :dix, :Axi, :xiii].each do |d|  # for each degree in the chord
+  chrd.append (degree d, :Fs, :major)  # add the corresponding note
+end
+play chrd  # play an F# 13+11-9 chord, using roman numeral symbols
+},
+                               %Q{
+chrd = []
+['1', '3', '5', 'd7', 'd9', 'A11', '13'].each do |d|
+  chrd.append (degree d, :Fs, :major)
+end
+play chrd  # the same chord as above, but using decimal number strings
 }]
 
 
@@ -3690,7 +3745,7 @@ end",
           doc:           "In music we build chords from scales. For example, a C major chord is made by taking the 1st, 3rd and 5th notes of the C major scale (C, E and G). If you do this on a piano you might notice that you play one, skip one, play one, skip one etc. If we use the same spacing and start from the second note in C major (which is a D), we get a D minor chord which is the 2nd, 4th and 6th notes in C major (D, F and A). We can move this pattern all the way up or down the scale to get different types of chords. `chord_degree` is a helper method that returns a ring of midi note numbers when given a degree (starting point in a scale) which is a symbol `:i`, `:ii`, `:iii`, `:iv`, `:v`, `:vi`, `:vii` or a number `1`-`7`. The second argument is the tonic note of the scale, the third argument is the scale type and finally the fourth argument is number of notes to stack up in the chord. If we choose 4 notes from degree `:i` of the C major scale, we take the 1st, 3rd, 5th and 7th notes of the scale to get a C major 7 chord.",
           args:          [[:degree, :symbol_or_number], [:tonic, :symbol], [:scale, :symbol], [:number_of_notes, :number]],
           returns:       :ring,
-          opts:          nil,
+          opts:          { invert: "Apply the specified num inversions to chord. See the fn `chord_invert`." },
           accepts_block: false,
           memoize:       true,
           examples:      ["puts (chord_degree :i, :A3, :major) # returns a ring of midi notes - (ring 57, 61, 64, 68) - an A major 7 chord",
@@ -3700,6 +3755,7 @@ end",
         "play (chord_degree :iv, :A3, :major, 3) # Chord iv in A major is a D major chord",
         "play (chord_degree :i, :C4, :major, 4) # Taking four notes is the default. This gives us 7th chords - here it plays a C major 7",
         "play (chord_degree :i, :C4, :major, 5) # Taking five notes gives us 9th chords - here it plays a C major 9 chord",
+        "play (chord_degree :i, :C4, :major, 3, invert: 1) # Play the first inversion of chord i in C major - (ring 64, 67, 72)"
       ]
 
 
@@ -3921,17 +3977,18 @@ play (chord_invert (chord :A3, \"M\"), 2) #Second inversion - (ring 64, 69, 73)
           info.ctl_validate!(args_h) if info
         end
 
-        if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
-          unless in_good_time?
-            __delayed_message "!! Out of time, skipping: control node #{node.id}, #{arg_h_pp(args_h)}"
-            return node
+        unless __system_thread_locals.get(:sonic_pi_spider_real_time_mode)
+          if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
+            unless in_good_time?
+              __delayed_message "!! Out of time, skipping: control node #{node.id}, #{arg_h_pp(args_h)}"
+              return node
+            end
           end
         end
-
         node.control args_h
 
         unless __thread_locals.get(:sonic_pi_mod_sound_synth_silent)
-          __delayed_message "control node #{node.id}, #{arg_h_pp(args_h)}"
+          __delayed_message "control node #{node.id}, #{arg_h_pp(args_h)}" unless node.is_a?(BlankNode)
         end
         return node
       end
@@ -4338,15 +4395,16 @@ Also, if you wish your synth to work with Sonic Pi's automatic stereo sound infr
         args_h = normalise_and_resolve_sample_args(path, args_h, info)
 
         buf_id = buf_info.id
-
-        if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
-          unless in_good_time?
-            if args_h.empty?
-              __delayed_message "!! Out of time, skipping: sample #{path.inspect}"
-            else
-              __delayed_message "!! Out of time, skipping: sample #{path.inspect}, #{arg_h_pp(args_h)}"
+        unless __system_thread_locals.get(:sonic_pi_spider_real_time_mode)
+          if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
+            unless in_good_time?
+              if args_h.empty?
+                __delayed_message "!! Out of time, skipping: sample #{path.inspect}"
+              else
+                __delayed_message "!! Out of time, skipping: sample #{path.inspect}, #{arg_h_pp(args_h)}"
+              end
+              return BlankNode.new(args_h)
             end
-            return BlankNode.new(args_h)
           end
         end
 
@@ -4368,11 +4426,13 @@ Also, if you wish your synth to work with Sonic Pi's automatic stereo sound infr
       def trigger_inst(synth_name, args_h, info=nil, group=current_group)
         processed_args = normalise_and_resolve_synth_args(args_h, info, true)
 
-        if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
-          unless in_good_time?
-            __delayed_message "!! Out of time, skipping: synth #{synth_name.inspect}, #{arg_h_pp(processed_args)}"
+        unless __system_thread_locals.get(:sonic_pi_spider_real_time_mode)
+          if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
+            unless in_good_time?
+              __delayed_message "!! Out of time, skipping: synth #{synth_name.inspect}, #{arg_h_pp(processed_args)}"
 
-            return BlankNode.new(args_h)
+              return BlankNode.new(args_h)
+            end
           end
         end
 
@@ -4395,10 +4455,12 @@ Also, if you wish your synth to work with Sonic Pi's automatic stereo sound infr
         chord_group = @mod_sound_studio.new_group(:tail, group, "CHORD")
         cg = ChordGroup.new(chord_group, notes, info)
 
-        if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
-          unless in_good_time?
-            __delayed_message "!! Out of time, skipping: synth #{sn.inspect}, #{arg_h_pp({note: notes}.merge(args_h))}"
-            return BlankNode.new(args_h)
+        unless __system_thread_locals.get(:sonic_pi_spider_real_time_mode)
+          if __thread_locals.get(:sonic_pi_mod_sound_timing_guarantees)
+            unless in_good_time?
+              __delayed_message "!! Out of time, skipping: synth #{sn.inspect}, #{arg_h_pp({note: notes}.merge(args_h))}"
+              return BlankNode.new(args_h)
+            end
           end
         end
 
@@ -4415,7 +4477,7 @@ Also, if you wish your synth to work with Sonic Pi's automatic stereo sound infr
         notes.each do |note|
           if note
             args_h[:note] = note
-            nodes << trigger_synth(synth_name, args_h, cg, info)
+            nodes << trigger_synth(synth_name, args_h.dup, cg, info)
           end
         end
         cg.sub_nodes = nodes
@@ -4893,8 +4955,19 @@ Also, if you wish your synth to work with Sonic Pi's automatic stereo sound infr
             # see .normalise_args!
             val = (args_h[val] || defaults[val]) if val.is_a?(Symbol)
             scaled_val = val * __system_thread_locals.get(:sonic_pi_spider_sleep_mul)
-            new_args[arg_name] = scaled_val unless scaled_val == defaults[arg_name]
 
+            default = defaults[arg_name]
+            if (args_h.has_key?(arg_name))
+              # if we already have a value for arg_name,
+              # then clobber it with the scaled value
+              new_args[arg_name] = scaled_val
+            else
+              # add scaled val to new_args
+              # unless the scaled value is the default value
+              # (in which case we don't need to send it across
+              # the wire)
+              new_args[arg_name] = scaled_val unless default == scaled_val
+            end
           end
         else
           # only scale the args that have been passed.

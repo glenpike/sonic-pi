@@ -260,7 +260,7 @@ module SonicPi
     end
 
     def html_public_path
-      File.absolute_path("#{app_path}/gui/html/resources/public")
+      File.absolute_path("#{app_path}/gui/html/public")
     end
 
     def qt_gui_path
@@ -303,10 +303,6 @@ module SonicPi
       log_path + '/erlang.log'
     end
 
-    def osc_cues_log_path
-      log_path + '/osc_cues.log'
-    end
-
     def osmid_m2o_log_path
       log_path + '/osmid_m2o.log'
     end
@@ -346,6 +342,24 @@ module SonicPi
 
     def user_settings_path
       File.absolute_path("#{home_dir}/settings.json")
+    end
+
+    def fetch_url(url, anonymous_uuid=true)
+      begin
+
+          params = {:ruby_platform => RUBY_PLATFORM,
+                    :ruby_version => RUBY_VERSION,
+                    :ruby_patchlevel => RUBY_PATCHLEVEL,
+                    :sonic_pi_version => @version.to_s}
+
+        params[:uuid] = global_uuid if anonymous_uuid
+
+        uri = URI.parse(url)
+        uri.query = URI.encode_www_form(params)
+        Net::HTTP.get_response uri
+      rescue
+        nil
+      end
     end
 
     def log_raw(s)
