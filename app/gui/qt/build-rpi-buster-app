@@ -9,16 +9,16 @@ OSMID_DIR=${SP_APP_SRC}/../../server/native/linux/osmid
 echo "This script has been tested on RPi with Raspbian 'Buster'"
 
 #Supercollider & plugins has been fixed so 3.9.x is working
-sudo apt-get install supercollider sc3-plugins
+sudo apt-get install -y supercollider sc3-plugins
 
 #QT Requirements for qwt and qscintilla
-sudo apt-get install libqwt-qt5-dev qt5-default libqt5svg5-dev qttools5-dev qt5-qmake qt5-default qttools5-dev qttools5-dev-tools qtdeclarative5-dev libqt5webkit5-dev qtpositioning5-dev libqt5sensors5-dev qtmultimedia5-dev libqscintilla2-qt5-dev
+sudo apt-get install -y libqwt-qt5-dev qt5-default libqt5svg5-dev qttools5-dev qt5-qmake qt5-default qttools5-dev qttools5-dev-tools qtdeclarative5-dev libqt5webkit5-dev qtpositioning5-dev libqt5sensors5-dev qtmultimedia5-dev libqscintilla2-qt5-dev
 
 #Aubio can be installed from a package now
-sudo apt-get install aubio-tools libaubio-dev
+sudo apt-get install -y aubio-tools libaubio-dev
 
 #Additional requirements for sonic-pi
-sudo apt-get install libffi-dev ruby-dev bundler libssl-dev libboost-dev cmake
+sudo apt-get install -y libffi-dev ruby-dev bundler libssl-dev libboost-dev cmake
 
 #Manually install the Aubio gem from master because we can't seem to install via bundler at present
 cd  ${SP_ROOT}
@@ -28,6 +28,7 @@ gem build aubio.gemspec
 sudo gem install aubio-0.3.1.gem 
 
 #Install osmid (for MIDI support)
+sudo apt-get install -y libasound2-dev
 cd ${SP_ROOT}
 git clone https://github.com/llloret/osmid.git || true
 cd osmid
@@ -35,7 +36,7 @@ git checkout ${OSMID_VERSION}
 mkdir -p build
 cd build
 cmake ..
-make
+make -j3
 mkdir -p ${OSMID_DIR}
 install m2o o2m -t ${OSMID_DIR}
 
